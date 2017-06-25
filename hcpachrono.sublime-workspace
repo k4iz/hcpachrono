@@ -1,0 +1,332 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Datalogger_Complete/platformio.ini",
+			"settings":
+			{
+				"buffer_size": 509,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Datalogger_Complete/src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 4605,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/ds3231.ino",
+			"settings":
+			{
+				"buffer_size": 2129,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"last_filter": "Package Control: in",
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/src"
+	],
+	"file_history":
+	[
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/hcpachrono.sublime-project",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/.gitignore",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/Makefile",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/src/main.cpp",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/Adafruit_TCS34725/Adafruit_TCS34725.cpp",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/RTClib/examples/ds3231/RTClib.cpp",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/src/Makefile",
+		"/C/Users/rafa/OneDrive/#Projects/Nodemcu/Datalogger_Complete/src/main.cpp",
+		"/C/Users/rafa/blink/src/Makefile",
+		"/C/Users/rafa/AppData/Roaming/Sublime Text 3/Packages/User/Terminal.sublime-settings",
+		"/C/Users/rafa/AppData/Roaming/Sublime Text 3/Packages/Terminal/Terminal.sublime-settings",
+		"/C/Users/rafa/AppData/Roaming/Sublime Text 3/Packages/Terminal/Default (Windows).sublime-keymap",
+		"/C/Users/rafa/OneDrive/#Projects/PlatformIO/Arduino Uno/DHT22_lib_test/lib/private_lib/DHT/DHT.h",
+		"/C/Users/rafa/OneDrive/#Projects/PlatformIO/Arduino Uno/DHT22_lib_test/lib/private_lib/DHT/DHT.cpp",
+		"/C/Users/rafa/NTUSER.DAT",
+		"/C/Users/rafa/Downloads/[kickass.so]glossika.spanish.castilian.fluency.1.3.torrent",
+		"/C/Users/rafa/Documents/WeChat Files/rafaeljost/BackupFiles/iphone_18349b6d92ce98f9285f6dc2cad7ddcb/BAK_0_TEXT",
+		"/C/Users/rafa/Documents/WeChat Files/rafaeljost/BackupFiles/iphone_18349b6d92ce98f9285f6dc2cad7ddcb/Backup.db"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Datalogger_Complete/platformio.ini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 509,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Datalogger_Complete/src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4605,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								429,
+								429
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/ds3231.ino",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1362,
+								934
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Arduino-like IDE/Arduino.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 513.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.stino_build_panel":
+	{
+		"height": 0.0
+	},
+	"output.stino_panel":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "hcpachrono.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"mak",
+				"Datalogger_Complete\\Makefile"
+			],
+			[
+				"main",
+				"Datalogger_Complete\\src\\main.cpp"
+			],
+			[
+				"ds32",
+				"Datalogger_Complete\\lib\\RTClib\\examples\\ds3231\\ds3231.ino"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 341.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
