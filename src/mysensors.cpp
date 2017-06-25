@@ -83,6 +83,7 @@ void initializeDHT22(void)
     dht.begin();
 }
 
+
 void printDateTime(File myFile)
 {
     /*DS3231*/
