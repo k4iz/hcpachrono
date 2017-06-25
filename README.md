@@ -17,7 +17,7 @@ CS   | 4           | D8 (GPIO 15)
 
 desc | pin Arduino | pin NodeMCU
 -----|-------------|--------------
-data | 2           | D3 (GPIO 0)
+data | 2           | D4 (GPIO 2)
  
 ### I2C
 

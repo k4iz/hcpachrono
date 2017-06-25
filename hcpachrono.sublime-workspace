@@ -8,30 +8,107 @@
 	"buffers":
 	[
 		{
-			"file": "Datalogger_Complete/platformio.ini",
+			"file": "Datalogger_Complete/src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 509,
+				"buffer_size": 5608,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/rafa/AppData/Local/Temp/7zO8B6DED46/part.prefix0000_c370f033d3f6e718f3cd68009db820d9_999.fzp",
+			"settings":
+			{
+				"buffer_size": 4697,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Datalogger_Complete/src/main.cpp",
+			"file": "/C/Users/rafa/Desktop/part.prefix0000_c370f033d3f6e718f3cd68009db820d9_999.fzp",
 			"settings":
 			{
-				"buffer_size": 4605,
+				"buffer_size": 4697,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/rafa/AppData/Local/Temp/7zO08583989/part.prefix0000_aaaac370f033d3f6e718f3cd68009db820d9_999.fzp",
+			"settings":
+			{
+				"buffer_size": 4699,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 635,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/ds3231.ino",
+			"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/RTClib.cpp",
 			"settings":
 			{
-				"buffer_size": 2129,
-				"encoding": "UTF-8",
+				"buffer_size": 14152,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Datalogger_Complete/lib/Adafruit_TCS34725/Adafruit_TCS34725.h",
+			"settings":
+			{
+				"buffer_size": 8041,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "all: build monitor\n\nbuild:\n\tplatformio run -t upload\n\nmonitor:\n\tplatformio device monitor",
+			"file": "Datalogger_Complete/Makefile",
+			"file_size": 95,
+			"file_write_time": 131428762410020760,
+			"settings":
+			{
+				"buffer_size": 89,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/Makefile",
+			"settings":
+			{
+				"buffer_size": 1548,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 36,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Datalogger_Complete/lib/nodemcu_pinout.h",
+			"settings":
+			{
+				"buffer_size": 743,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Datalogger_Complete/platformio.ini",
+			"settings":
+			{
+				"buffer_size": 510,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -43,9 +120,13 @@
 	"command_palette":
 	{
 		"height": 150.0,
-		"last_filter": "Package Control: in",
+		"last_filter": "Package Control: INS",
 		"selected_items":
 		[
+			[
+				"Package Control: INS",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: in",
 				"Package Control: Install Package"
@@ -55,7 +136,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 432.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -76,15 +157,25 @@
 	"expanded_folders":
 	[
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono",
-		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/src"
 	],
 	"file_history":
 	[
+		"/C/Users/rafa/Desktop/Catalex_MicroSD_Module/part.prefix0000_c370f033d3f6e718f3cd68009db820d9_5.fzp",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/README.md",
+		"/C/Users/rafa/meteorolog/nodemcu/esplogger/esplogger.ino",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/RTClib/examples/ds3231/ds3231.ino",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/Makefile",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Makefile",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/RTClib/examples/ds3231/Makefile",
+		"/C/Users/rafa/OneDrive/#Projects/Arduino Uno/Datalogger_Complete/src/main.cpp",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/RTClib/examples/ds1307/ds1307.ino",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/Adafruit_Unified_Sensor/Adafruit_Sensor.h",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/platformio.ini",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/src/main.cpp",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/hcpachrono.sublime-project",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/.gitignore",
-		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/Makefile",
-		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/src/main.cpp",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/Adafruit_TCS34725/Adafruit_TCS34725.cpp",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/RTClib/examples/ds3231/RTClib.cpp",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/src/Makefile",
@@ -116,6 +207,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"parameters",
+			"16"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -133,57 +226,115 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Datalogger_Complete/platformio.ini",
+					"file": "Datalogger_Complete/src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 509,
+						"buffer_size": 5608,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								489,
-								489
+								40,
+								40
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/rafa/AppData/Local/Temp/7zO8B6DED46/part.prefix0000_c370f033d3f6e718f3cd68009db820d9_999.fzp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								140,
+								140
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/rafa/Desktop/part.prefix0000_c370f033d3f6e718f3cd68009db820d9_999.fzp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								226,
+								226
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2565.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Datalogger_Complete/src/main.cpp",
+					"buffer": 3,
+					"file": "/C/Users/rafa/AppData/Local/Temp/7zO08583989/part.prefix0000_aaaac370f033d3f6e718f3cd68009db820d9_999.fzp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4605,
+						"buffer_size": 4699,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								429,
-								429
+								108,
+								108
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/XML/XML.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -195,33 +346,231 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/ds3231.ino",
+					"buffer": 4,
+					"file": "README.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2129,
+						"buffer_size": 635,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1362,
-								934
+								426,
+								426
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Arduino-like IDE/Arduino.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/RTClib.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2951,
+								2951
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": -0.0,
-						"translation.y": 513.0,
+						"translation.y": 57.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Datalogger_Complete/lib/Adafruit_TCS34725/Adafruit_TCS34725.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8041,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7182,
+								7182
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1881.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Datalogger_Complete/Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 89,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Datalogger_Complete/lib/RTClib/examples/ds3231/Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1548,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								29,
+								29
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 36,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								36,
+								36
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Datalogger_Complete/lib/nodemcu_pinout.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 743,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								424
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Datalogger_Complete/platformio.ini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 510,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								491,
+								491
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -284,16 +633,24 @@
 		"selected_items":
 		[
 			[
+				"ds32in",
+				"Datalogger_Complete\\lib\\RTClib\\examples\\ds3231\\ds3231.ino"
+			],
+			[
+				"ds130",
+				"Datalogger_Complete\\lib\\RTClib\\examples\\ds1307\\ds1307.ino"
+			],
+			[
+				"ds32",
+				"Datalogger_Complete\\lib\\RTClib\\examples\\ds3231\\ds3231.ino"
+			],
+			[
 				"mak",
 				"Datalogger_Complete\\Makefile"
 			],
 			[
 				"main",
 				"Datalogger_Complete\\src\\main.cpp"
-			],
-			[
-				"ds32",
-				"Datalogger_Complete\\lib\\RTClib\\examples\\ds3231\\ds3231.ino"
 			]
 		],
 		"width": 0.0
@@ -324,7 +681,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 341.0,
+	"side_bar_width": 285.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
