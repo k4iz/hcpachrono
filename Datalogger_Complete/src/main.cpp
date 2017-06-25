@@ -1,4 +1,4 @@
-//All necessary libraries
+/*All necessary libraries*/
 #include <SD.h>
 #include <SPI.h>
 #include <RTClib.h>
@@ -6,55 +6,73 @@
 #include <Adafruit_TCS34725.h>
 #include <DHT.h>
 
-#define  FILENAME  "logfile.txt"
+#define  FILENAME           "logfile.txt"        // datafile name 
+#define  SAMPLING_RATE      3                    // seconds (reading interval)
 
-//DS3231 parameters
-//DS3231  rtc(SDA, SCL);
-RTC_DS3231 rtc;
+/*DS3231 parameters*/
+RTC_DS3231 rtc; //defining object
 
-//TCS34725 parameters
+/*TCS34725 parameters*/
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_700MS, TCS34725_GAIN_1X);
 
-//DHT22 parameters
-#define DHTPIN 2
+/*DHT22 parameters*/
+#ifdef __AVR
+    #define DHTPIN 2 // Pin 2 on Arduino Uno
+#elif defined(ESP8266)
+    #define DHTPIN 2 // GPIO 2 | D4 on Nodemcu
+#endif
+
 #define DHTTYPE DHT22
 DHT dht(DHTPIN, DHTTYPE);
 
-//SD card parameters
-const int pinCS = 4; // Pin 10 on Arduino Uno
+/*SD card parameters*/
+#ifdef __AVR
+    const int pinCS = 4; // Pin 4 on Arduino Uno
+#elif defined(ESP8266)
+    const int pinCS = 15; // GPIO 15 | D8 on Nodemcu
+#endif
 
+File myFile; //defining object
 
-void printDateTime(File fp);
-void printTemperetureData(File fp);
-void printLightData(File fp);
+/*Declaring necessary functions - C/C++ syntax*/
+void printDateTime(File myFile);
+void printTemperetureData(File myFile);
+void printLightData(File myFile);
 
 
 void setup() 
 {
-    // Open serial communications and wait for port to open:
+
+    /*Open serial communications and wait for port to open:*/
     Serial.begin(9600);
     while (!Serial) {};
 
-    //initializing SD card
+    /*initializing SD card*/
     Serial.print("Initializing SD card...");
     if (!SD.begin(pinCS)) 
     {
         Serial.println("Card failed, or not present");
-        while (1); //if there is no SD card present, the program does nothing
+        while (1) { yield(); }; //if there is no SD card present, the program does nothing
     }
     Serial.println("SD Card initialized.");
 
-    //initializing DS3231(rtc)
+
+    #ifndef ESP8266
+        while (!Serial); // for Leonardo/Micro/Zero
+    #endif
+    /*initializing DS3231(rtc)*/
     Serial.println("DS3231 initialized");
     rtc.begin();
     
+    /*setting time*/
     // following line sets the RTC to the date & time this sketch was compiled
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     // This line sets the RTC with an explicit date & time, for example to set
     // January 21, 2014 at 3am you would call:
-    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+    //rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+    Serial.println("RTC was set");
     
-    //initializing TCS34725
+    /*initializing TCS34725*/
     if (tcs.begin()) 
     {
       Serial.println("TCS34725 initialized");
@@ -64,15 +82,15 @@ void setup()
         Serial.println("No TCS34725 found ... check your connections");
         while (1);
     }
-    //initializing DHT22
+    /*initializing DHT22*/
     Serial.println("DHT22 initialized");
     dht.begin();
 }
 
 
-void loop(void) 
+void loop() 
 {
-    File myFile = SD.open(FILENAME, FILE_WRITE);
+    myFile = SD.open(FILENAME, FILE_WRITE);
     if (myFile) 
     {
         printDateTime(myFile);
@@ -84,20 +102,20 @@ void loop(void)
         printTemperetureData(myFile);
        
         myFile.close();
-        Serial.println("[OK] Datalog written at logfile.txt\n");
+        Serial.println("[OK] Datalog written\n");
     } 
     else 
     {
-      // if the file didn't open, print an error:
-      Serial.println("error opening logfile.txt");
+      /*if the file didn't open, print an error:*/
+      Serial.println("error opening the log file");
     }
-    delay(2000); //wait 3 seconds to run loop again
+    delay(1000 * SAMPLING_RATE); //wait 3 seconds to run loop again
 }
 
 
-void printDateTime(File fp)
+void printDateTime(File myFile)
 {
-    //DS3231
+    /*DS3231*/
     Serial.println("DS3231:");
 
     DateTime now = rtc.now();
@@ -115,59 +133,23 @@ void printDateTime(File fp)
     Serial.print(now.second(), DEC);
     Serial.println();
 
-    fp.print(now.year(), DEC);
-    fp.print('-');
-    fp.print(now.month(), DEC);
-    fp.print('-');
-    fp.print(now.day(), DEC);
-    fp.print(' ');
-    fp.print(now.hour(), DEC);
-    fp.print(':');
-    fp.print(now.minute(), DEC);
-    fp.print(':');
-    fp.print(now.second(), DEC);
+    myFile.print(now.year(), DEC);
+    myFile.print('-');
+    myFile.print(now.month(), DEC);
+    myFile.print('-');
+    myFile.print(now.day(), DEC);
+    myFile.print(' ');
+    myFile.print(now.hour(), DEC);
+    myFile.print(':');
+    myFile.print(now.minute(), DEC);
+    myFile.print(':');
+    myFile.print(now.second(), DEC);
 }
 
 
-void printLightData(File fp)
-{ 
-
-    //TCS34725
-    Serial.println("TCS34725:");
-
-    tcs.setInterrupt(true);  // turn off LED
-
-    uint16_t r, g, b, c, colorTemp, lux;
-
-    tcs.getRawData(&r, &g, &b, &c);
-    colorTemp = tcs.calculateColorTemperature(r, g, b);
-    lux = tcs.calculateLux(r, g, b);
-
-    Serial.print("Color Temp: "); Serial.print(colorTemp, DEC); Serial.print(" K - ");
-    Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" - ");
-    Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
-    Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
-    Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
-    Serial.print("C: "); Serial.print(c, DEC); Serial.println(" ");
-    Serial.println(" ");
-
-    fp.print(colorTemp);
-    fp.print(",");
-    fp.print(lux);
-    fp.print(",");
-    fp.print(r);
-    fp.print(",");
-    fp.print(g);
-    fp.print(",");
-    fp.print(b);
-    fp.print(",");
-    fp.print(c);
-}
-
-
-void printTemperetureData(File fp)
+void printTemperetureData(File myFile)
 {
-    //DHT22
+    /*DHT22*/
     Serial.println("DHT22:");
 
     float h = dht.readHumidity();
@@ -194,9 +176,45 @@ void printTemperetureData(File fp)
     Serial.println(" ");
 
     //write DHT22 data in the card (h, t, hic)
-    fp.print(h);
-    fp.print(",");
-    fp.print(t);
-    fp.print(",");
-    fp.println(hic);
+    myFile.print(h);
+    myFile.print(",");
+    myFile.print(t);
+    myFile.print(",");
+    myFile.println(hic);
+}
+
+
+void printLightData(File myFile)
+{ 
+
+    /*TCS34725*/
+    Serial.println("TCS34725:");
+
+    tcs.setInterrupt(true);  //turn off LED
+
+    uint16_t r, g, b, c, colorTemp, lux;
+
+    tcs.getRawData(&r, &g, &b, &c);
+    colorTemp = tcs.calculateColorTemperature(r, g, b);
+    lux = tcs.calculateLux(r, g, b);
+
+    Serial.print("Color Temp: "); Serial.print(colorTemp, DEC); Serial.print(" K - ");
+    Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" - ");
+    Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
+    Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
+    Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
+    Serial.print("C: "); Serial.print(c, DEC); Serial.println(" ");
+    Serial.println(" ");
+
+    myFile.print(colorTemp);
+    myFile.print(",");
+    myFile.print(lux);
+    myFile.print(",");
+    myFile.print(r);
+    myFile.print(",");
+    myFile.print(g);
+    myFile.print(",");
+    myFile.print(b);
+    myFile.print(",");
+    myFile.print(c);
 }
