@@ -1,6 +1,6 @@
 # uncomment to choose platform for building  
-BOARD = nodemcuv2
-#BOARD = uno
+# BOARD = nodemcuv2
+BOARD = uno
 
 
 all: build monitor

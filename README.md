@@ -1,3 +1,4 @@
+
 # hcpachrono
 
 Datalogger for measuring Light and temperature
@@ -17,7 +18,7 @@ CS   | 4           | D8 (GPIO 15)
 
 desc | pin Arduino | pin NodeMCU
 -----|-------------|--------------
-data | 2           | D4 (GPIO 2)
+data | A1           | D4 (GPIO 2)
  
 ### I2C
 

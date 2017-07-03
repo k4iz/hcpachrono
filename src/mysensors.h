@@ -5,10 +5,28 @@
 void initializeSDCard(void);
 void initializeRTC(void);
 void initializeDHT22(void);
-void initializeTCS34725(void);   
+void initializeTCS34725(void);
 
-void printDateTime(File myFile);
-void printTemperetureData(File myFile);
-void printLightData(File myFile);
+String getFilenameTimestamp(void);
+
+/* Parameters:
+ *     char sep -- CSV separator
+ * Return: String -- value of the readings
+ */
+String getDateTime(char sep, char date_sep, char hour_sep);
+
+/* Parameters:
+ *     char sep -- CSV separator
+ * Return: String -- value of the readings
+ */
+String getTemperatureData(char sep);
+
+/* Parameters:
+ *     char sep -- CSV separator for internal fields
+ * Return: String -- value of the readings
+ *                   Format: "colorTemp<sep>lux<sep>r<sep>g<sep>b<sep>c<sep>"
+ *                        where: colortemp -- int -- temperature color approx                      
+ */
+String getLightData(char sep);
 
 #endif
