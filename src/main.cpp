@@ -6,6 +6,7 @@
 //#include <ESP8266WiFi.h>
 #include <RTClib.h>
 #include "mysensors.h"
+#include "autorange.h"
 
 // #define  SAMPLING_RATE      10                    // seconds (reading interval)
 
@@ -49,10 +50,6 @@ void setup()
     initializeRTC();
     initializeDHT22();
     initializeTCS34725();
-    
-    // filename = getFilenameTimestamp();
-
-    // datalogTimer.attach(SAMPLING_RATE, datalog);
 }
 
 

@@ -8,72 +8,38 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/rafa/Downloads/4_Condor_LP(1-13.07).txt",
+			"file": "src/mysensors.cpp",
 			"settings":
 			{
-				"buffer_size": 5183646,
+				"buffer_size": 6172,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 3470,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/Adafruit_TCS34725/examples/tcs34725autorange/tcs34725autorange.ino",
+			"settings":
+			{
+				"buffer_size": 6102,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "1. \tResumo\n\n2. Introdução\n\tDescrever o problema\n\tO que já foi feito?\n\tO que ainda falta fazer?\n\n3. Objetivos\n\n\tO que será feito no trabalho?\n\tO que esperamos alcançar com o trabalho?\n\tPor que fazer dessa forma?\n\n4. Revisão bibliográfica/Fundamentação Teórica\n\t\n\t\n\tO que eu preciso saber sobre captação de dados?\n\tO que eu preciso saber sobre temperatura?\n\tO que eu preciso saber sobre luz e cor?\n\n\t\tHue\n\t\tEfeito tristimulus\n\t\tEspectro visível Modelo RGB vs CIEXYZ\n\t\tPlanckian locus\n\n\tO que eu preciso saber de cada componente?\n\tARDUINO\n\n\t\tO arduino é uma placa de prototipagem rápida. Constitui-se de um micro\n\t\tcontrolador X junto com Y,Z. Devido  a intuitividade e  facilidade  no\n\t\tseu uso, ela é recomendada para diversos tipos de aplicações. Utiliza uma linguagem de programação baseada em C\n\n\t\tRTC \n\n\t\t\tO RTC (Real Time Clock) é  utilizado para manter  a contagem  do tempo\n\t\t\tmesmo durante quedas de luz pos  possui uma bateria  interna  que pode\n\t\t\tdurar até  anos. A  partir da sua inicialização, é possível gravar com\n\t\t\talta precisão o horário de cada medição\n\n\t\tSD\n\n\t\t\tLocal primário  de armazenamento dos  dados. Grava  todas as  medições\n\t\t\trealizadas no cartão SD, sendo uma redundância no sistema.\n\n\t\tESP8266\n\n\t\t\tPlaca wifi. Consegue transmitir  todos  os dados coletados diretamente\n\t\t\tpara um   servidor,   facilitando   o  acompanhamento  de   todos   os\n\t\t\tdispositivos.\n\n\t\tDHT22\n\n\t\t\tSensor de  umidade  e  temperatura. Consiste  em  um  termistor  e  um\n\t\t\thigrometro. Foi escolhido  pela  alta  versatilidade  e  precisão  nos\n\t\t\tvalores coletados.\n\n\t\tTCS34725\n\n\t\t\tSensor de luminosidade. Consegue  captar informações de iluminância em\n\t\t\tLux, possui um filtro de luz infra-vermelha para aumentar a exatidão e\n\t\t\tfiltros de cor fornecendo o valor RGB da luz incidida.\n\n\t\tDisplay OLED?\n\t\t\tperhaps\n\t\n\tTemperatura\n\t\tdescrição de conceitos básicos\n\n\tCor\n\t\tEspectro da luz visvível\n\t\tResposta espectral\n\t\tEfeito tristimulus?\n\n\t\tProblemas na construção de um espectômetro\n\n\t\tLux\n\n\t\tTemperatura da cor\n\n\t\t\tA temperatur da cor é um parâmetro amplamente utilizado para caracterizar diferentes tipos de luz, sendo uma forma de caracterizar propriedades espectrais de fontes de luz quase-branca. A temperatura da cor, medida em Kelvin (K), se refere a temperatura que um corpo negro deveria ser aquecido para emitir luz de uma determinada cor.\n\n\t\t\tUm corpo negro é um objeto teórico que radia luz sem perdas. Como o aquecimento de um corpo negro, ele radia luz primeiro no espectro infra-vermelho, depois na luz visível vermelha, laranja, branca e finalmente azul/branca. Lampadas incandecentes são boas aproximações de emissores de corpo negro, porque boa parte da luz emitida é devido ao aquecimento dos seus filamentos.\n\n\t\t\tPara fontes de luz que não produzem luz a partir de um elemento aquecido, sua cor pode ser caracterizada pela Cor de temperatura correlacionada (CCT), também medida em Kelvin(K). CCT surgiu para lidar com fontes de luz que não são modeladas por um corpo negro\n\n\t\t\tCTT é a temperatura de um corpo negro cuja chromacity point é mais perto da chromacity point da fonte de luz não-planckiana.CCT é basicamente a descrição se a luz é azul/branca, neutra ou vermelha/branca. O planckian locus demostra todas as possíves temperaturas de cor \n\n\n\t\t\tRGB\n\t\t\ttristimulus values\n\n\tCalibração\n\n\n\tProgramação\n\n\n\n5. Metodologia\n\n\tComo foi construido?\n\t\tEsquematizar montagem no fritzing\n\t\tFotografar primeira versão\n\n\tComo foi calibrado?\n\t\tTransformação RGB -> XYZ -> Temperatura da cor\n\n\tComo foi otimizado?\n\t\tModelo 3d da case\n\t\tImplementação wifi\n\t\tAgregamento de novos dispositivos\n\n\tCalibração\n\t\tTemperatura\n\t\t\tSeguindo as recomendações da NBR14610:2000, para os valores de temperatura na faixa de -30°C a 1600°, o sensor DHT22 poderá ser calibrado em um forno que consiga manter a temperatura uniforme e com certa estabilidade. Este foi escolhido pela praticidade em relação as outras opções (banho de sais, banho de líquido), uma vez que o sensor não é impermeabilizado.\n\n\t\tLuz\n\t\t\trgb\n\t\t\tlux\n\t\t\tcolor temperature\n\n\tColeta de dados\n\t\tcasa\n\t\thospital\n\n6. Resultados e Discussão\n\t\n\tAnálise prévia dos dados obtidos\n\n\t\tCasa - Pelo menos um dia?\n\t\tHospital - Pelo menos um dia?\n\n\tComparação com outroso dispositivos\n\n\t\tActígrafo?\n\n\n\n7. Conclusões\n\tQualidade vs custo vs flexibilidade vs viabilidade\n\tPropostas futuras\n\t\tNovos sensores\n\n8. Referências Bibliográficas\n\tArtigos inclusos no projeto\n\tDatasheets\n\tLinks\n\tProcurar livros",
-			"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/corpo.md",
-			"file_size": 1162,
-			"file_write_time": 131431811146746678,
+			"file": "README.md",
 			"settings":
 			{
-				"buffer_size": 4454,
+				"buffer_size": 637,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "\n\n#I2C has the advantage that it only needs two signal connections to Arduino—using multiple devices on the two connections is fairly easy, and you get acknowledgment that signals have been correctly received. The disadvantages are that the data rate is slower than SPI and data can only be traveling in one direction at a time, lowering the data rate even more if two-way communication is needed….\n\nhttps://bitknitting.wordpress.com/2013/10/10/part-3-adding-sensors-with-a-focus-on-the-properties-of-the-light-readings/\n\n**********************************************\n####Integration time####\n\n#\"It is pretty much the same as camera exposure time. This can help in low-light. It can also make a difference with non-constant sources like fluorescents. You need to integrate over some number of 60Hz cycles to get an accurate average measurement. The term “count” in the context of sensors usually means the raw ADC output. I would interpret “MAX COUNT” to be the full-scale reading for the specified integration cycle setting I set the integration time to 700 ms with the intent of optimizing for sensitivity since speed is not a concern\"\n\n**********************************************\n####Gain####\n\n\nganho - amplificação do sinal\nhttps://en.wikipedia.org/wiki/Gain_(electronics)\n\n\n#“Gain amplifies the signal so it is in the range where the A/D converter can measure it with reasonable resolution.  Yes, noise is amplified too.  But without gain, you would not be able to distinguish some signals from noise.”\n\n#\"The 3.8 million-to-one dynamic range of the sensor means that measurements at the lower end of that range would only be using 1 or 2 bits of the A/D resolution.\"\n\n***********************************************\n\n####Gamut####\n#In color reproduction, including computer graphics and photography, the gamut, or color gamut /ˈɡæmət/, is a certain complete subset of colors. The most common usage refers to the subset of colors which can be accurately represented in a given circumstance, such as within a given color space or by a certain output device.\n\n#Another sense, less frequently used but not less correct, refers to the complete set of colors found within an image at a given time. In this context, digitizing a photograph, converting a digitized image to a different color space, or outputting it to a given medium using a certain output device generally alters its gamut, in the sense that some of the colors in the original are lost in the process.\n************************************************\n\n\n\n#####Considerations\n\n#Like all sensors, there is variability between units and they need to be calibrated against a standard. But there are other factors that can account for the discrepancy. These sensors both measure incident light, but the LX1010B has a large diffusing disc in front of the sensor. This will alter the effective angular responsivity of the sensor. They may also be differences in the spectral response of the two sensors. These are documented for the TCS34725 here: http://www.adafruit.com/datasheets/TCS34725.pdf.\n\n#Gain is helpful in low-light situations to improve the resolution of the readings (usually in exchange for increased noise). You just have to remember to divide the reading by the gain used to obtain it.\n\n#Gain - amplifies the signal in order to provide a closer reading to the \"real\" value. This is valuable (but of limited value) in low light situations (since both the signal and noise are amplified) - e.g.: as gain is used in videography as a last resort versus adding more light.\n\n#The TCS34725 supports amplifying the signal by 4, 16, an 60. The value provided based on the gain then needs to be divided by the amount of gain. So in my readings, the value for a gain of 60x is 570. Which is closer to the 440 reading of the light meter. Other factors on how the two read light characteristics is most likely causing a significant part of the differences in readings.\n\n#When to use which gain is \"an art.\" e.g.: would i put in my sketch if lux < 500 use a gain of 60x ...if lux is < 1000 but > 500 use a gain of 16x and so on? (based on adhoc testing)...or IS there a rule of thumb?\n\n#Not exactly. The 3.8 million-to-one dynamic range of the sensor means that measurements at the lower end of that range would only be using 1 or 2 bits of the A/D resolution. Gain amplifies the signal so it is in the range where the A/D converter can measure it with reasonable resolution. Yes, noise is amplified too. But without gain, you would not be able to distinguish some signals from the noise.\n\n#The optimal gain to use in a given situation is the one that makes use of the full 16-bits of A/D resolution. That would be the gain that puts the reading somewhere between mid-range and full-scale.\n\n\n#Yes. It is pretty much the same as camera exposure time. This can help in low-light. It can also make a difference with non-constant sources like fluorescents. You need to integrate over some number of 60Hz cycles to get an accurate average measurement. \n\n#The term \"count\" in the context of sensors usually means the raw ADC output. I would interpret \"MAX COUNT\" to be the full-scale reading for the specified integration cycle setting\n\n****************************************************\nactiwatch 2 e <progress value=\"\" max=\"\">\nfucking nasa?\nhttps://www.nasa.gov/mission_pages/station/research/experiments/858.html",
-			"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/Trechos.md",
-			"file_size": 5004,
-			"file_write_time": 131431770542793373,
-			"settings":
-			{
-				"buffer_size": 5376,
-				"line_ending": "Windows",
-				"name": "Will I use latex? ----------------- perhaps"
-			}
-		},
-		{
-			"contents": "#Color temperature has long been used as a metric to characterize broad band light sources. It is a means to characterize the spectral properties of a near-white light source.\n\n#Color temperature, measured in degrees Kelvin (K), refers to the temperature to which one would have to heat a blackbody (or planckian) radiator to produce light of a particular color. \n\n#A blackbody radiator is defined as a theoretical object that is a perfect radiator of visible light. As the blackbody radiator is heated it radiates energy first in the infrared spectrum and then in the visible spectrum as red, orange, white and finally bluish white light.\n\n#Incandescent lights are good models of blackbody radiators, because most of the light emitted from them is due to the heating of their filaments.\n\n#For broadband light sources that do not produce light from a heated element, their color temperaturecan be characterized by Correlated Color Temperature (CCT), which is also measured in degrees Kelvin (K). \n\n#CCT was introduced to address broadband light sources that are not modeled by a blackbody radiator. \n\n#CCT is defined as the temperature of a blackbody radiator whose chromaticity point is closest to the chromaticity point of the non-planckian light source. \n\n#Correlated color temperature is basically a description of whether the light is bluish-white, neutral, or reddish white. The Planckian locus, shown in Figure 1, represents all possible color temperatures.\n\n#It follows the colors of a planckian radiator as it is heated up from less than 2,000K to about 10,000K. The planckian locus is the curved line in the center of the chromaticity diagram. Table 1 shows the color temperature of some common light sources.\n\n\n",
-			"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/translate.md",
-			"file_size": 1844,
-			"file_write_time": 131431762065265059,
-			"settings":
-			{
-				"buffer_size": 1722,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "Color temperature has long been used as a metric t"
-			}
-		},
-		{
-			"contents": "1. RESUMO\n\n\tDiversos organismos  vivos  apresentam  um   relógio  biológico   interno,\n\tcontrolado principalmente  pelos  núcleos   supraquiasmáticos   (NSQ)   do\n\thipotálamo. Esta regulação rítmica é necessária para que o organismo possa\n\tpredizer as oscilações ambientais e  realizar  as alterações sistêmicas de\n\tadaptação às mudanças do meio. O ciclo claro/escuro é o fenômeno ambiental\n\tmais potente capaz de sincronizar  o  nosso ritmo interno ao  externo pela\n\tsinalização de  estímulos  fóticos através  do trato retino-  hipotalâmico\n\tpara os  NSQ, que envia impulsos  rítmicos  para  as demais  estruturas do\n\torganismo.\n\n\tO que se percebe atualmente é uma  alta  exposição à iluminação artificial\n\tdurante o dia e durante  a noite, em detrimento da exposição à luz natural\n\te a  suas variações  durante  o dia. As consequências relacionadas  a isso\n\tainda estão  sendo  estudadas, mas já se  sabe que  diferentes  padrões de\n\texposição à  iluminação  afetam  o  funcionamento  correto  desse  sistema\n\ttemporizador. Dentre   os   efeitos   já    descritos   estão   distúrbios\n\tpsiquiátricos, disfunções metabólicas e câncer.\n\n\tAs evidências obtidas até  agora no campo da pesquisa biomédica demonstram\n\to impacto da iluminação na  regulação  da  nossa fisiologia.  Além  disso,\n\tcrescentes evidências  sugerem  o potencial  terapêutico  de  sistemas  de\n\tiluminação mais próximos à  luz natural, que  possam minimizar  os efeitos\n\tdeletérios que  a   exposição  excessiva  à  luz  (na  maioria  das  vezes\n\tartificial) tem  sobre  o  nosso  organismo. Sendo  assim, o  objetivo  do\n\tpresente estudo  é caracterizar  o tipo de iluminação utilizado na Unidade\n\tde Internação Psiquiátrica do  Hospital  de Clínicas de  Porto Alegre, que\n\tpode estar interferindo na saúde e no bem-estar dos pacientes internados e\n\tdos profissionais de saúde,  bem  como verificar  sua  influência sobre  o\n\tritmo de atividade/repouso de funcionários e pacientes da Unidade.\n\n\n\n1. INTRODUÇÃO\n\n\tOs ritmos  biológicos  são  parte  da  fisiologia  dos  organismos  vivos,\n\texistindo enquanto mecanismos adaptativos ao ambiente. Diversas atividades\n\tfisiológicas apresentam  comportamento rítmico, sendo o ciclo sono/vigília\n\tum dos  exemplos mais  clássicos  de  ritmos circadianos manifestados pelo\n\tnosso organismo  (Bechtold,  2010;  Marques  et al.,  2003).  O  principal\n\t“marca-passo” da ritmicidade circadiana em  mamíferos constitui-se em dois\n\taglomerados de  neurônios  no  hipotálamo,  os  Núcleos  Supraquiasmáticos\n\t(NSQ). Apesar  de   apresentar   atividade  autônoma,   o  NSQ   pode  ser\n\tsincronizado por pistas externas que ajudam  na harmonização da fisiologia\n\tdo ser vivo  às variações  rítmicas  ambientais. O  ciclo claro/escuro é o\n\tfenômeno ambiental mais potente capaz de sincronizar o nosso ritmo interno\n\tao externo.  O NSQ  recebe  estímulos  fóticos  através  do trato  retino-\n\thipotalâmico e envia  impulsos rítmicos para diversas estruturas, entre as\n\tquais encontra-se a glândula pineal. Na ausência de luz, a pineal produz e\n\tsecreta melatonina,   hormônio  responsável  por  traduzir   a  informação\n\treferente à iluminação do ambiente e repassá-la de forma sistêmica (Moore,\n\t1997; 1980).\n\n\tDistúrbios do  ciclo   sono/vigília   são  muito   comuns   em   ambientes\n\thospitalares, tanto  em  pacientes internados, quanto  em funcionários que\n\trealizam plantões.  A  disrupção   de   sono  tem  efeitos  potencialmente\n\tprejudiciais a saúde,  sendo que  em  pacientes internados pode contribuir\n\tpara aumento de  tempo de  internação. O ambiente hospitalar  parece  agir\n\tcomo um dificultador  da indução e  manutenção  do ciclo sono/vigília,  na\n\tmedida em que nem  sempre  permite  contato com  a iluminação do ambiente,\n\tsujeita os pacientes e funcionários à iluminação durante a noite e promove\n\tinterrupção do sono em decorrência  das avaliações de rotina (Bano et al.,\n\t2014; Canellas et al., 2015).\n\n\tAlterações luminosas incompatíveis  com  o  período do  dia  em termos  de\n\tintensidade, duração  e transmitância  espectral (Dauchy et al., 2015) têm\n\tefeitos marcantes sobre os ritmos circadianos. Há alguns anos,  se pensava\n\tque somente luzes  de  2500  lux  ou mais  poderiam  suprimir a síntese de\n\tmelatonina. Porém, recentemente  viu-se  que  expor a retina  à iluminação\n\tmonocromática de 1 lux ou menos com comprimento de onda de 440-460 nm (luz\n\tde cor  azul), já é suficiente para observar  tal supressão  (Lucas, 2014;\n\tBrainard et  al., 2001). Nesse  sentido, diversos estudos  têm abordado  o\n\tpotencial terapêutico  da  luz.  A  terapia  de luz,  por  exemplo,  já  é\n\tutilizada em indivíduos que sofrem de transtorno afetivo sazonal (Glickman\n\tet al., 2006). No entanto, não só a exposição à luz, mas também a presença\n\tdo escuro tem sido  estudadas.  Um trabalho conduzido  por Vásquez-Ruiz et\n\tal. (2014),  com neonatos internados  em uma unidade  neonatal  de terapia\n\tintensiva, verificou  que  aqueles  submetidos  a  um  ciclo  claro/escuro\n\tatravés da  colocação de  aparatos  no  rosto da criança que bloqueavam  a\n\tiluminação da  unidade durante  a noite  tiveram, por  consequência, ganho\n\tmais rápido de peso e melhor saturação de oxigênio em relação aos neonatos\n\tque permaneceram sob iluminação artificial constante (padrão de iluminação\n\tda unidade hospitalar).\n\n\tAinda não foram estabelecidos valores  de iluminância recomendados para  a\n\texposição em ambientes de hospitais, mas estudos sugerem que, em geral, os\n\tpacientes hospitalizados  estão expostos  a  baixos níveis de iluminância,\n\tcom pouca variação de exposição à luz entre os períodos do  dia e da noite\n\t(Bano et  al.,  2014;  Bernhofer  et  al.,  2014).  Em termos  gerais,  as\n\tcondições de   iluminação  podem  ser   insuficientes   para  promover   a\n\tsincronização circadiana e a manutenção da qualidade de sono (Bernhofer et\n\tal., 2014). Diante da evidente importância da luz como sinal ambiental que\n\tsincroniza o relógio circadiano e da noção de  que a compatibilidade  luz-\n\tdia e escuro-noite contribuem para  um melhor funcionamento fisiológico, a\n\tcaracterização do  tipo de iluminação utilizado em ambientes hospitalares,\n\tem especial nas unidades de internação,  pode auxiliar na identificação de\n\tfatores que estejam prejudicando a saúde dos indivíduos.\n\n\n\n2. HIPÓTESE\n\n\tAs evidências obtidas até agora no  campo da pesquisa biomédica demonstram\n\to impacto  da iluminação na regulação  da nossa fisiologia. Neste  estudo,\n\tpretendemos caracterizar o  padrão de iluminação  utilizado na  Unidade de\n\tInternação Psiquiátrica do Hospital de Clínicas  de Porto Alegre, que pode\n\testar interferindo na saúde e no bem-estar dos pacientes internados e  dos\n\tfuncionários da Unidade. Nossa hipótese é de que o fotoperíodo e o tipo de\n\tiluminação aos  quais  os  pacientes  e os  funcionários estão  submetidos\n\tdiferem expressivamente  da  iluminação  natural  observada  em  ambientes\n\texternos.\n\n \n\n3. OBJETIVOS\n\n\t3.1. Geral\n\n\t\tCaracterizar o tipo de iluminação utilizado  na Unidade de  Internação\n\t\tPsiquiátrica do Hospital de  Clínicas de Porto Alegre, e correlacioná-\n\t\tlo com  os  padrões  de  actigrafia  dos  pacientes  internados  e dos\n\t\tprofissionais de saúde.\n\n\t3.2. Específicos\n\n\t\to Caracterizar o tipo de  iluminação da Unidade  através  de  sensores\n\t\tfotossensíveis instalados  na  unidade.  Estes  sensores avaliarão  os\n\t\tseguintes parâmetros:\n\n\t\t\to Intensidade de iluminação;\n\t\t\to Espectro de cor da iluminação (temperatura de cor);\n\t\t\to Fotoperíodo (Tempo de claro e de escuro);\n\n\t\to Avaliar fatores confundidores que podem afetar o bem-estar como:\n\n\t\t\to Temperatura (em °C);\n\t\t\to Umidade do ar;\n\t\t\to Nível de ruído;\n\n\t\to Avaliar ritmos de atividade e repouso e exposição à luz (em lux) dos\n\t\tpacientes internados   e  dos  profissionais  de  saúde   através   de\n\t\tactígrafos de pulso;\n\n\t\to Correlacionar o  cronotipo  aferido  a partir do  Munich  ChronoType\n\t\tQuestionnaire (MCTQ) com os ritmos de atividade e  repouso e exposição\n\t\tà luz  (em lux) dos pacientes internados  e dos profissionais de saúde\n\t\tatravés de actígrafos de pulso.\n\n\n\n4. MATERIAIS E MÉTODOS\n\n\tARDUINO\n\n\t\tO arduino é uma placa de prototipagem rápida. Constitui-se de um micro\n\t\tcontrolador X junto com Y,Z. Devido  a intuitividade e  facilidade  no\n\t\tseu uso, ela é recomendada para diversos tipos de aplicações.\n\n\tRTC\n\n\t\tO RTC (Real Time Clock) é  utilizado para manter  a contagem  do tempo\n\t\tmesmo durante quedas de luz pos  possui uma bateria  interna  que pode\n\t\tdurar até  anos. A  partir da sua inicialização, é possível gravar com\n\t\talta precisão o horário de cada medição\n\n\tSD\n\n\t\tLocal primário  de armazenamento dos  dados. Grava  todas as  medições\n\t\trealizadas no cartão SD, sendo uma redundância no sistema.\n\n\tESP8266\n\n\t\tPlaca wifi. Consegue transmitir  todos  os dados coletados diretamente\n\t\tpara um   servidor,   facilitando   o  acompanhamento  de   todos   os\n\t\tdispositivos.\n\n\tDHT22\n\n\t\tSensor de  umidade  e  temperatura. Consiste  em  um  termistor  e  um\n\t\thigrometro. Foi escolhido  pela  alta  versatilidade  e  precisão  nos\n\t\tvalores coletados.\n\n\tTCS34725\n\n\t\tSensor de luminosidade. Consegue  captar informações de iluminância em\n\t\tLux, possui um filtro de luz infra-vermelha para aumentar a exatidão e\n\t\tfiltros de cor fornecendo o valor RGB da luz incidida.\n\n\n\n\t4.1. Delineamento de Estudo\n\n\t\tTrata-se de um estudo  transversal (descritivo) sobre a intersecção de\n\t\tfatores relacionados à iluminação a qual estão expostos os pacientes e\n\t\tfuncionários da Unidade Psiquiátrica do Hospital  de Clínicas de Porto\n\t\tAlegre com seus ritmos de atividade e repouso e seu cronotipo.\n\n \n\n\t4.2. Calibração dos parâmetros de iluminação, umidade, temperatura e ruído\n\n\t\tPara a  aferição  do  fator  de  estudo  (iluminação),  bem  como  dos\n\t\tpossíveis fatores  variáveis  confundidores, serão  acoplados sensores\n\t\tespecíficos para  cada variável  em uma placa  de  prototipagem rápida\n\t\tconhecida como  Arduino® (Figura  1),  um  hardware  com capacidade de\n\t\tcaptação e  armazenamento  de  dados.  Estes microcontroladores  serão\n\t\tcalibrados frente  a outros  sensores de  referência  (e.g. luxímetro,\n\t\ttermômetro) para aumentar a exatidão e rastreabilidade das medidas dos\n\t\tdados físicos.\n\t\t\n\t\t20 placas  serão  dispostas  na Unidade de Internação  Psiquiátrica em\n\t\tpontos estratégicos (Figura 2), incluindo a sala de prescrição médica,\n\t\to posto  de  enfermagem e alguns leitos  de pacientes selecionados que\n\t\trecebam luz do corredor durante a noite.\n\t\t\n\t\tOs sistemas  de  medição baseados nas  placas Arduino®  serão montadas\n\t\tpelo próprio laboratório através de uma parceria com o Dr. Paulo Smith\n\t\tSchneider, professor do Departamento de Engenharia Mecânica, da Escola\n\t\tde Engenharia, da Universidade Federal do Rio Grande do Sul (UFRGS).\n\n\n\n\t4.4. Actigrafia\n\n\t\tA actigrafia é uma  técnica  de avaliação do  ciclo  sono-vigília  que\n\t\tpermite o  registro  da atividade  motora através  dos movimentos  dos\n\t\tmembros durante 24  horas  ou  mais.  Trata-se de  um dispositivo  que\n\t\tgeralmente é colocado no  pulso ou no  tornozelo para  a  detecção dos\n\t\tmovimentos, permitindo também  avaliar a  exposição à luz (em unidades\n\t\tde lux) e temperatura corporal.\n\n\t\tUtilizando os  dados  de  atividade, podemos  obter uma estimativa  do\n\t\ttempo total de sono, o tempo total acordado e o número de despertares.\n\t\tA actigrafia é particularmente útil para estudos de  seguimento e para\n\t\tavaliação da  eficácia clínica.  Comparada com  a  polissonografia,  é\n\t\tconsiderada um método de menor custo, que permite o  registro do  sono\n\t\tem ambiente  natural. Utilizando  os dados  de luz, pode-se  obter uma\n\t\testimativa da exposição dos indivíduos à luz, tanto no período diurno,\n\t\tquanto no período noturno.\n\n\t\tNeste projeto, serão utilizados  actigrafos  ActTrust da marca  Condor\n\t\tInstruments Ltda® com software versão Actstudio beta 2014. O  ActTrust\n\t\té um aparelho compacto, leve e utilizado no pulso, que mede atividade,\n\t\ttemperatura, espectro  e  intensidade  de  luz.  Os  dados  podem  ser\n\t\textraídos para posteriores análises através de uma  base conectada via\n\t\tUSB.\n\n\n\n\t4.5. Instrumentos de pesquisa\n\n\t\tSerão aplicados instrumentos  que avaliam o  regime  de  trabalho  dos\n\t\tfuncionários da   unidade,   além  de  um  questionário  de  avaliação\n\t\tsociodemográfica e  o  MCTQ.  4.5.  1. Munich ChronoType Questionnaire\n\t\t(MCTQ)\n\n\t\t\tO Munich  Chronotype   Questionnaire   (MCTQ)  é  um   instrumento\n\t\t\tintroduzido por    Roenneberg   e   colegas   (2003)   (veja    em\n\t\t\thttp://www.theWeP.org), a  partir  do qual é  possível calcular  o\n\t\t\tponto médio  de sono  em dias  de  trabalho e  em dias livres  e o\n\t\t\tJetleg Social (JLS).  Os pontos  médios  de  sono  são  calculados\n\t\t\tsomando-se a metade da  média de duração de  sono ao horário usual\n\t\t\tde dormir. JLS  é calculado  como  a diferença absoluta  entre  os\n\t\t\tpontos médios de sono dos dias de trabalho e dos dias livres.\n\n\n\n\t4.6. Protocolo de estudo\n\n\t\tA coleta   dos   dados  será  executada   na  Unidade   de  Internação\n\t\tPsiquiátrica do Hospital de Clínicas de Porto Alegre  e a  análise dos\n\t\tdados será   conduzida   no  Laboratório   de  Cronobiologia   e  Sono\n\t\tHCPA/UFRGS. De  posse da  planta  baixa da  Unidade,  os fotossensores\n\t\tserão posicionados em pontos estratégicos dos quartos  dos pacientes e\n\t\tde locais de acesso dos funcionários para caracterização do padrão  de\n\t\tiluminação. As medições  serão realizadas  ao  longo de  dois invernos\n\t\tconsecutivos, para  igualar as condições de  fotoperíodo  do  ambiente\n\t\texterno. Funcionários da equipe  de enfermagem e da equipe médica, bem\n\t\tcomo alguns  pacientes serão convidados  a  utilizar  um  actígrafo de\n\t\tpulso durante 2 semanas e responder ao MCTQ.\n\n\n\n\t\t4.6.1. Critérios de elegibilidade de participantes\n\n\t\t\tOs participantes elegíveis  são pacientes internados na Unidade de\n\t\t\tInternação Psiquiátrica conforme os seguintes critérios:\n\n\t\t\t•\tSem previsão de alta em  duas semanas do início do  protocolo\n\t\t\t•\t(conforme julgamento da equipe assistente);\n\n\t\t\t•\tAusência de episódio psicótico presente;\n\n\t\t\t•\tJuízo crítico preservado;\n\n\t\t\t•\tAusência de transtornos do ciclo sono-vigília  diagnosticados\n\t\t\t•\tclinicamente;\n\n\t\t\t•\tCapacidade de ler e assinar o TCLE.\n\n\t\t\tOs funcionários da unidade elegíveis para  participação do  estudo\n\t\t\tdevem preencher os seguintes critérios:\n\n\t\t\t• Ser enfermeiro(a), técnico(a) de enfermagem,  ou secretário(a) da Unidade de\n\t\t\tInternação   Psiquiátrica, ou médicos residentes do Serviço  de Psiquiatria do\n\t\t\tHospital de Clínicas de Porto Alegre;\n\n\t\t\t•\tAusência de transtornos do ciclo sono-vigília auto-declarado;\n\n\t\t\t•\tCapacidade de ler e assinar o TCLE.\n\n\n\n\t4.7. Análise estatística\n\n\t\tOs dados serão organizados  em  banco de  dados  no programa Microsoft\n\t\tExcel 2010.  O  tratamento  dos  dados  das  variáveis  rítmicas  será\n\t\trealizado com   o  software  El  Temps.  A  análise  estatística  será\n\t\trealizada no  programa SPSS, versão 23.  Serão utilizadas estatísticas\n\t\tdescritivas para caracterização dos padrões de iluminação e  testes de\n\t\tcorrelação para comparar  os dados obtidos através dos sensores com os\n\t\tdados de  actigrafia,  tanto  para  o  período diurno,  quanto  para o\n\t\tnoturno. A comparação dos dados entre  funcionários e  pacientes  será\n\t\trealizada através dos testes de comparação  de médias apropriados para\n\t\ta distribuição dos dados.\n\n\n\n\t4.8. Tamanho amostral\n\n\t\tO cálculo amostral  foi realizado  no software  WinPepi  versão 11.48.\n\t\tConsiderando-se um fator de  correlação (r)  maior do que 0,4 entre as\n\t\tmedidas de atividade e repouso dos actígrafos e  dos valores do  MCTQ,\n\t\tpara uma significância de 5%  e um poder de 80%, serão  necessários 47\n\t\tparticipantes. Como  a  análise   será  realizada  separadamente  para\n\t\tfuncionários e  pacientes,   estima-se   um   número   total   de   94\n\t\tparticipantes, sendo 47 pacientes e 47 funcionários.\n\n\n\n5. QUESTÕES ÉTICAS\n\n\n\n\tO protocolo seguirá  as condições estabelecidas  na  Resolução  466/12  do\n\tConselho Nacional de Saúde (  CNS).  O projeto será submetido  à aprovação\n\tpela Comissão  de Ética e Pesquisa em  Saúde  do Hospital  de  Clínicas de\n\tPorto Alegre.\n\n\n\n6. RISCOS E BENEFÍCIOS DA PARTICIPAÇÃO NO PROJETO\n\n\tNão estão  previstos   riscos  associados  à  utilização  dos  actígrafos,\n\taparelhos semelhantes a relógios de pulso, que  são bastante utilizados em\n\testudos de ritmo sem qualquer tipo de  efeito colateral  associado. Poderá\n\thaver desconforto  relacionado ao uso contínuo do  equipamento posicionado\n\tno punho durante o período estabelecido pela  equipe de pesquisa, bem como\n\tconstrangimento ao responder os questionários.\n\n\tComo benefício previsto,  este projeto  poderá  contribuir para aumentar o\n\tconhecimento acerca   do  padrão  de  iluminação  ao   qual  pacientes   e\n\tfuncionários do hospital estão submetidos, além de servir como base para a\n\tcriação de futuros projetos nessas populações.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3. REVISÃO BIBLIOGRÁFICA\n\n\nARDUINO\n\nDHT22\n\nDHT22  capacitive humidity sensing digital temperature and humidity  module is\none  that contains the compound  has been calibrated digital signal output  of\nthe temperature  and  humidity sensors.  Application  of a  dedicated  digital\nmodules  collection  technology  and  the  temperature  and  humidity  sensing\ntechnology,  to  ensure  that the product has  high  reliability and excellent\nlong-term stability. The sensor includes a capacitive  sensor  wet  components\nand a high-precision  temperature measurement  devices,  and  connected with a\nhigh-performance  8-bit  microcontroller.  The product  has excellent quality,\nfast response, strong anti-jamming capability, and high cost. Standard single-\nbus  interface, system  integration quick  and  easy.  Small  size, low  power\nconsumption, signal transmission distance up to 20 meters,  making it the best\nchoice of all kinds of applications and even the  most demanding applications.\nDHT22  has higher precision  and  can  replace  the  expensive  imported SHT10\ntemperature  and humidity sensor. It  can measure the  environment temperature\nand humidity to meet the high demand.The product has high reliability and good\nstability.If it's used  and  combined with  special  sensor Arduino  expansion\nboard,it  will be easily implemented  the  interactive effect which related to\nthe temperature and  humidity  perception. Caution:  DHT22 digital temperature\nand humidity sensor  is designed for analog  sensor interfaces.The analog port\nwill be used as the digital which will not occupy the original digital port of\nthe Arduino.The lines of the sensor which can transform the analog function to\ndigital that  can be  use  on  digital  port.  •  Supply voltage: 5V •  Output\nvoltage:  0-3.3V  •  Temperature range:-40-80℃ resolution0.1℃ error  <±0.5℃  •\nHumidity range:0-100%RH resolution0.1%RH error±2%RH • size: 38 x 20mm\n\n\nO DHT22  / AM2302  é um  sensor digital  de temperatura e  umidade. Utiliza um\nsensor de umidade capacitivo e um termistor para medir o ar circundante. Emite\num sinal digital no pino de dados sem a necessidade de conversores analógicos.\nRelativamente simples  de  usar, o DHT22 é um sensor de baixo custo e relativa\nprecisão  de medição. O  sensor vem pré-calibrado  e não  necessita  de outros\ncomponentes  para  ser ligado  ao  Arduino.  Possui  um pequeno tamanho e  uma\ncapacidade de transmissão longa, de aproximadamente 20m. 8 3.1.1.\n\nDados Técnicos:   Modelo: DHT22   Tensão de operação: 3-5VDC (5,5VDC máximo)\n Faixa de medição de umidade: 0 a 100% UR   Faixa de medição de temperatura:\n-40 a +80°C   Corrente: 2,5mA máx. durante uso, em stand by de 100uA a 150 uA\n  Precisão de  umidade  de  medição: ±  2,0%  UR    Precisão de  medição  de\ntemperatura: ± 0,5 °C   Resolução: 0,1   Tempo de resposta: 2s   Dimensões:\n25 x 15, 7mm (sem terminais)\n\nThere are two kinds  of of thermistors, NTC (negative temperature coefficient)\nand PTC (positive  temperature  coefficient). In  general,  you will  see  NTC\nsensors used for temperature measurement. PTC's are often  used  as resettable\nfuses - an increase in temperature  increases  the resistance which means that\nas more current passes thru  them,  they heat up and 'choke back' the current,\nquite handy for protecting circuits! Thermistors have some benefits over other\nkinds  of temperature  sensors  such  as analog  output chips (LM35/TMP36 ) or\ndigital temperature sensor chips (DS18B20) or thermocouples. • First off, they\nare  much much cheaper than  all  the above! A  bare 5% thermistor is  only 10\ncents in bulk.  • They  are  also much easier to waterproof since its  just  a\nresistor. • They work at any voltage  (digital sensors require 3 or 5V logic).\n•  Compared to a  thermocouple, they don't require an  amplifier to  read  the\nminute voltages - you can use any microcontroller to read a thermistor. • They\ncan also  be  incredibly  accurate  for the  price. For  example, the  10K  1%\nthermistor in  the shop is good for measuring with ±0.25°C accuracy! (Assuming\nyou have an accurate enough analog converter) • They are difficult to break or\ndamage  - they are much  simpler and  more reliable On  the  other hand,  they\nrequire a little more  work to interpret readings, and they dont  work at very\nhigh temperatures like thermocouples. Without a digital-to-analog converter on\nboard,  you  might  be better  off  with  a digital temperature  sensor. Their\nsimplicity  makes  them  incredibly  popular for  basic  temperature  feedback\ncontrol. For example, lets say you wanted to have a fan that turns on when the\ntemperature gets high.  You could use a microcontroller, a digital sensor, and\nhave that control the relay. Or you could use the thermistor  to feed the base\nof  a transistor, as the temperature rises,  the resistance goes down, feeding\nmore current into the transistor until it turns on. (This is a rough idea, you\nwould need  a few  more components to  make it  work)  Even  if you do  use  a\nmicrocontroller or complex system, for the price you can't beat 'em!\n\n\n\n\n\nTC34725\n\n\nRTC DS3231\n\nSD\n\nESP8266\n\n\tCAYENNE\n\nCALIBRAÇÃO / CONSTANTE DE TEMPO\n\nPROPAGAÇÃO DE ERROS / CONFIABILIDADE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMETODOLOGIA\n\nCONSTRUÇÃO ARDUINO\n\nANÁLISE PRÉVIA DOS DADOS\n\nCONSTRUÇÃO ESP8266\n\nCALIBRAÇÃO DHT22\n\nCALIBRAÇÃO TC34725\n\nCONSTRUÇÃO DA PLACA\n\nCONSTRUÇÃO DO CASE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCONCLUSÕES\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-			"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/copy.md",
-			"file_size": 22163,
-			"file_write_time": 131431765116689787,
-			"settings":
-			{
-				"buffer_size": 22513,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "1. \tResumo\n\tFazer no final\n\n2. Introdução\n\tRetirar do projeto do hcpa\n\n3. Objetivos\n\tRetirar do projeto do hcpa\n\n4. Revisão bibliográfica\n\tarduino\n\t\tOlhar TCCs anteriores que também tenham usado o arduino\n\n\tSensores\n\t\tDescrição breve sobre cada sensor\n\n\tTemperatura\n\t\tdescrição de conceitos básicos\n\n\tCor\n\t\tEspectro da luz visvível\n\t\tProblemas na construção de um espectômetro\n\t\tLux\n\t\tTemperatura da cor\n\t\t\tRGB\n\t\t\ttristimulus values\n\n\tProgramação\n\n5. Metodologia\n\tCalibração\n\t\tTemperatura\n\t\tLuz\n\n\tColeta de dados\n\n6. Resultados e Discussão\n\tProposta de análise\n\n7. Conclusões\n\tViabilidade\n\tPropostas de expansão\n\n8. Referências Bibliográficas\n\tArtigos inclusos no projeto\n\tDatasheets\n\tLinks\n\tProcurar livros",
-			"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/Estrutura.md",
-			"file_size": 758,
-			"file_write_time": 131431770525667951,
-			"settings":
-			{
-				"buffer_size": 707,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "1.Resumo"
 			}
 		}
 	],
@@ -130,23 +96,42 @@
 	"expanded_folders":
 	[
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/lib",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/lib/Adafruit_TCS34725",
-		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/lib/Adafruit_TCS34725/examples/tcs34725",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/lib/Adafruit_TCS34725/examples",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/lib/Adafruit_TCS34725/examples/tcs34725autorange",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/src",
 		"/C/Users/rafa/OneDrive/#Projects/Texto TCC"
 	],
 	"file_history":
 	[
-		"/C/Users/rafa/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/rafa/OneDrive/#Projects/iFriction/data/cp3_g220.txt",
+		"/C/Users/rafa/OneDrive/#Projects/iFriction/data/cp2_g80.txt",
+		"/C/Users/rafa/OneDrive/#Projects/iFriction/data/cp4_g600.txt",
+		"/C/Users/rafa/OneDrive/#Projects/iFriction/data/cp1_g36.txt",
+		"/C/Users/rafa/Documents/Arduino/libraries/Ultrasonic-master/Ultrasonic.cpp",
+		"/C/Users/rafa/Desktop/ultrassom/py/ArduinoUnoClass.py",
+		"/C/Users/rafa/Downloads/5jul_luz_actigrafo.txt",
+		"/C/Users/rafa/Desktop/Light-Sensor-Suite-master/README.md",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/src/mysensors.h",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/src/mysensors.cpp",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/src/main.cpp",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/lib/Adafruit_TCS34725/Adafruit_TCS34725.h",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/src/Makefile",
+		"/C/Program Files (x86)/Arduino/lib/theme/theme.txt",
+		"/D/DEBUG3.TXT",
+		"/C/Users/rafa/OneDrive/#Projects/Texto TCC/Estrutura.md",
+		"/C/Users/rafa/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/rafa/OneDrive/#Projects/Texto TCC/copy.md",
+		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Makefile",
+		"/C/Users/rafa/OneDrive/#Projects/Texto TCC/Trechos.md",
+		"/C/Users/rafa/OneDrive/#Projects/Texto TCC/corpo.md",
+		"/C/Users/rafa/Downloads/4_Condor_LP(1-13.07).txt",
+		"/C/Users/rafa/OneDrive/#Projects/Texto TCC/translate.md",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/lib/nodemcu_pinout.h",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/README.md",
-		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/src/main.cpp",
-		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/src/Makefile",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/hcpachrono.sublime-project",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/Makefile",
-		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Makefile",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/RTClib/examples/ds3231/Makefile",
 		"/C/Users/rafa/OneDrive/#Projects/hcpachrono/Datalogger_Complete/lib/RTClib/examples/ds3231/ds3231.ino",
 		"/C/Users/rafa/OneDrive/#Projects/Arduino Uno/Datalogger_Complete/src/main.cpp",
@@ -206,181 +191,125 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/rafa/Downloads/4_Condor_LP(1-13.07).txt",
+					"file": "src/mysensors.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5183646,
+						"buffer_size": 6172,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4725162,
-								4725167
+								4937,
+								4937
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1053844.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/corpo.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4454,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								395,
-								395
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 108.0,
+						"translation.y": 3102.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/Trechos.md",
+					"buffer": 1,
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5376,
+						"buffer_size": 3470,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5280,
-								5280
+								2465,
+								2465
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Will I use latex? ----------------- perhaps",
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 374.0,
+						"translation.x": -0.0,
+						"translation.y": 1848.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/translate.md",
+					"buffer": 2,
+					"file": "lib/Adafruit_TCS34725/examples/tcs34725autorange/tcs34725autorange.ino",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1722,
+						"buffer_size": 6102,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1721,
-								1721
+								4465,
+								4445
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Color temperature has long been used as a metric t",
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1188.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/copy.md",
+					"buffer": 3,
+					"file": "README.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 22513,
+						"buffer_size": 637,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4375,
-								4378
+								405,
+								405
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/C/Users/rafa/OneDrive/#Projects/Texto TCC/Estrutura.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 707,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								707,
-								707
-							]
-						],
-						"settings":
-						{
-							"auto_name": "1.Resumo",
-							"syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -491,7 +420,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 282.0,
+	"side_bar_width": 354.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

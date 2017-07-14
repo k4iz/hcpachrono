@@ -9,7 +9,8 @@
 RTC_DS3231 rtc; //defining object
 
 /*TCS34725 parameters*/
-Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_700MS, TCS34725_GAIN_1X);
+// Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_700MS, TCS34725_GAIN_1X);
+
 
 /*DHT22 parameters*/
 #ifdef __AVR
@@ -60,20 +61,20 @@ void initializeRTC(void)
 }
 
 
-void initializeTCS34725(void)
-{
-    /*initializing TCS34725*/
-    if (tcs.begin()) 
-    {
-        Serial.println("TCS34725 initialized");
-    } 
-    else 
-    {
-        Serial.println("No TCS34725 found ... check your connections");
-        while (1);
-    }
+// void initializeTCS34725(void)
+// {
+//     /*initializing TCS34725*/
+//     if (tcs.begin()) 
+//     {
+//         Serial.println("TCS34725 initialized");
+//     } 
+//     else 
+//     {
+//         Serial.println("No TCS34725 found ... check your connections");
+//         while (1);
+//     }
 
-}
+// }
 
 
 void initializeDHT22(void)
@@ -189,45 +190,26 @@ String getTemperatureData(char sep)
 }
 
 
-String getLightData(char sep)
-{ 
-    tcs.setInterrupt(true);  //turn off LED
+// String getLightData(char sep)
+// { 
+//     tcs.setInterrupt(true);  //turn off LED
 
-    uint16_t r, g, b, c, colorTemp, lux;
+//     uint16_t r, g, b, c, colorTemp, lux;
 
-    tcs.getRawData(&r, &g, &b, &c);
-    colorTemp = tcs.calculateColorTemperature(r, g, b);
-    lux = tcs.calculateLux(r, g, b);
+//     tcs.getRawData(&r, &g, &b, &c);
 
 
-    String s="";
-    s += String(colorTemp) + sep;
-    s += String(lux) + sep;
-    s += String(r) + sep;
-    s += String(g) + sep;
-    s += String(b) + sep;
-    s += String(c);
-    return s;
+//     colorTemp = tcs.calculateColorTemperature(r, g, b);
+//     lux = tcs.calculateLux(r, g, b);
 
-    /*TCS34725*/
-    // Serial.println("TCS34725:");
-    // Serial.print("Color Temp: "); Serial.print(colorTemp, DEC); Serial.print(" K - ");
-    // Serial.print("Lux: "); Serial.print(lux, DEC); Serial.print(" - ");
-    // Serial.print("R: "); Serial.print(r, DEC); Serial.print(" ");
-    // Serial.print("G: "); Serial.print(g, DEC); Serial.print(" ");
-    // Serial.print("B: "); Serial.print(b, DEC); Serial.print(" ");
-    // Serial.print("C: "); Serial.print(c, DEC); Serial.println(" ");
-    // Serial.println(" ");
 
-    // myFile.print(colorTemp);
-    // myFile.print(",");
-    // myFile.print(lux);
-    // myFile.print(",");
-    // myFile.print(r);
-    // myFile.print(",");
-    // myFile.print(g);
-    // myFile.print(",");
-    // myFile.print(b);
-    // myFile.print(",");
-    // myFile.print(c);
-}
+//     String s="";
+//     s += String(colorTemp) + sep;
+//     s += String(lux) + sep;
+//     s += String(r) + sep;
+//     s += String(g) + sep;
+//     s += String(b) + sep;
+//     s += String(c) + sep;
+
+//     return s;
+// }
