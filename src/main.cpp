@@ -2,10 +2,19 @@
 #include <SD.h>
 #include <SPI.h>
 #include <Wire.h>
-#include "mysensors.h"
+#include "sensor_rtc.h"
+
+#define  __USEAUTORANGE
+
+#ifdef __USEAUTORANGE
+    #include "sensor_tcs_autorange.h"
+#else
+    #include "sensor_tcs.h"
+    #include "sensor_dht22.h"
+#endif
 
 // Uncomment to enable printing out nice debug messages.
-#define  DHT_DEBUG
+// #define  DHT_DEBUG
 
 // #define  SAMPLING_RATE      10                    // seconds (reading interval)
 
@@ -27,14 +36,24 @@
 
 // bool datalog_timeout=false;
 
+
+/*SD card parameters*/
+#ifdef __AVR
+    const int pinCS = 4; // Pin 4 on Arduino Uno
+#elif defined(ESP8266)
+    const int pinCS = 15; // GPIO 15 | D8 on Nodemcu
+#endif
+
+
 void datalog(void);
+void initializeSDCard(void);
 
 String filename = "dados.txt";
 
 void setup() 
 {
     /*Open serial communications and wait for port to open:*/
-    Serial.begin(9600);
+    Serial.begin(115200);
     // while (!Serial) {};
 
     #ifndef ESP8266
@@ -44,9 +63,13 @@ void setup()
     // Cayenne.begin(username, password, clientID, ssid, wifiPassword);
 
     initializeSDCard();
-    initializeRTC();
-    // initializeDHT22();
+    initializeRTC(); 
+#ifdef __USEAUTORANGE
+    initializeTCS34725_autorange();
+#else
+    initializeDHT22();    
     initializeTCS34725();
+#endif
 }
 
 
@@ -70,8 +93,12 @@ void datalog(void)
         String log_line="";
 
         log_line += getDateTime(sep, '-', ':') + sep;
-        // log_line += getTemperatureData(sep) + sep;
-        log_line += getLightData(sep);
+#ifdef __USEAUTORANGE
+        log_line += getLightData_autorange(sep);
+#else
+        log_line += getTemperatureData(sep) + sep;
+        log_line += getLightData(sep);        
+#endif
         log_line += "\r\n";  // NEW LINE windows style
  
         Serial.print("[DEBUG] ");
@@ -86,6 +113,22 @@ void datalog(void)
         Serial.println("[ERROR] Could not open file '" + filename + "'");
     }    
 }
+
+
+void initializeSDCard(void)
+{
+
+    /*initializing SD card*/
+    Serial.print("Initializing SD card...");
+    if (!SD.begin(pinCS)) 
+    {
+        Serial.println("Card failed, or not present");
+        while (1) { delay(0); }; //if there is no SD card present, the program does nothing
+    }
+    Serial.println("SD Card initialized.");
+
+}
+
 
 /*********************************************************************
  * timer callback 

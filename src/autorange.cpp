@@ -20,7 +20,9 @@ tcs34725::tcs34725() : agc_cur(0), isAvailable(0), isSaturated(0) {
 // initialize the sensor
 boolean tcs34725::begin(void) {
   tcs = Adafruit_TCS34725(agc_lst[agc_cur].at, agc_lst[agc_cur].ag);
+  // tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_700MS, TCS34725_GAIN_1X);
   if ((isAvailable = tcs.begin())) 
+    // {}; 
     setGainTime();
   return(isAvailable);
 }
@@ -51,18 +53,18 @@ void tcs34725::setGainTime(void) {
 void tcs34725::getData(void) {
   // read the sensor and autorange if necessary
   tcs.getRawData(&r, &g, &b, &c);
-  while(1) {
-    if (agc_lst[agc_cur].maxcnt && c > agc_lst[agc_cur].maxcnt) 
-      agc_cur++;
-    else if (agc_lst[agc_cur].mincnt && c < agc_lst[agc_cur].mincnt)
-      agc_cur--;
-    else break;
+  // while(1) {
+  //   if (agc_lst[agc_cur].maxcnt && c > agc_lst[agc_cur].maxcnt) 
+  //     agc_cur++;
+  //   else if (agc_lst[agc_cur].mincnt && c < agc_lst[agc_cur].mincnt)
+  //     agc_cur--;
+  //   else break;
 
     setGainTime(); 
     delay((256 - atime) * 2.4 * 2); // shock absorber
     tcs.getRawData(&r, &g, &b, &c);
-    break;    
-  }
+  //   break;    
+  // }
 
   // DN40 calculations
   ir = (r + g + b > c) ? (r + g + b - c) / 2 : 0;
