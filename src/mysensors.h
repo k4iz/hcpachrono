@@ -5,7 +5,7 @@
 void initializeSDCard(void);
 void initializeRTC(void);
 void initializeDHT22(void);
-// void initializeTCS34725(void);
+void initializeTCS34725(void);
 
 String getFilenameTimestamp(void);
 
@@ -27,6 +27,6 @@ String getTemperatureData(char sep);
  *                   Format: "colorTemp<sep>lux<sep>r<sep>g<sep>b<sep>c<sep>"
  *                        where: colortemp -- int -- temperature color approx                      
  */
-// String getLightData(char sep);
+String getLightData(char sep);
 
 #endif

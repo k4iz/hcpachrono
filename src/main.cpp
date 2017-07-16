@@ -2,15 +2,12 @@
 #include <SD.h>
 #include <SPI.h>
 #include <Wire.h>
-//#include <Ticker.h>
-//#include <ESP8266WiFi.h>
-#include <RTClib.h>
 #include "mysensors.h"
-#include "autorange.h"
+
+// Uncomment to enable printing out nice debug messages.
+#define  DHT_DEBUG
 
 // #define  SAMPLING_RATE      10                    // seconds (reading interval)
-
-// Ticker datalogTimer;
 
 /*Setting up CAYENNE*/
 //#define CAYENNE_DEBUG
@@ -48,35 +45,17 @@ void setup()
 
     initializeSDCard();
     initializeRTC();
-    initializeDHT22();
+    // initializeDHT22();
     initializeTCS34725();
 }
 
 
 void loop() 
 {
-    // Cayenne.loop();
-
-    // //Publish data every 10 seconds (10000 milliseconds). Change this value to publish at a different interval.
-    // if (millis() - lastMillis > 10000) {
-    //     lastMillis = millis();
-    //     //Write data to Cayenne here. This example just sends the current uptime in milliseconds.
-    //     Cayenne.virtualWrite(0, lastMillis);
-    //     //Some examples of other functions you can use to send data.
-    //     //Cayenne.celsiusWrite(1, 22.0);
-    //     //Cayenne.luxWrite(2, 700);
-    //     //Cayenne.virtualWrite(3, 50, TYPE_PROXIMITY, UNIT_CENTIMETER);
-    // }
-
-    // if (datalog_timeout)
-    // {
-
-	    // datalog_timeout = false; 	
-    // }
-
     datalog();
     delay(5000);
 }
+
 
 void datalog(void)
 {
@@ -91,7 +70,7 @@ void datalog(void)
         String log_line="";
 
         log_line += getDateTime(sep, '-', ':') + sep;
-        log_line += getTemperatureData(sep) + sep;
+        // log_line += getTemperatureData(sep) + sep;
         log_line += getLightData(sep);
         log_line += "\r\n";  // NEW LINE windows style
  
