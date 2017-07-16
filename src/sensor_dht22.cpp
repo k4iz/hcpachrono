@@ -1,4 +1,4 @@
-#include <DHT.h>
+#include <DHT_U.h>
 #include "sensor_DHT22.h"
 
 #define DHTTYPE DHT22

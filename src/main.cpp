@@ -3,8 +3,9 @@
 #include <SPI.h>
 #include <Wire.h>
 #include "sensor_rtc.h"
+#include "sensor_bmp180.h"
 
-#define  __USEAUTORANGE
+// #define  __USEAUTORANGE
 
 #ifdef __USEAUTORANGE
     #include "sensor_tcs_autorange.h"
@@ -64,6 +65,9 @@ void setup()
 
     initializeSDCard();
     initializeRTC(); 
+    initializeBMP180();
+
+
 #ifdef __USEAUTORANGE
     initializeTCS34725_autorange();
 #else
@@ -93,6 +97,12 @@ void datalog(void)
         String log_line="";
 
         log_line += getDateTime(sep, '-', ':') + sep;
+
+
+        log_line += getTemperatureBMP180(sep) + sep;
+
+
+
 #ifdef __USEAUTORANGE
         log_line += getLightData_autorange(sep);
 #else
