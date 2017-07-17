@@ -1,6 +1,9 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BMP085_U.h>
+// #include "Adafruit_BMP085.h"
+
+#include "sensor_BMP180.h"
 
 /* This driver uses the Adafruit unified sensor library (Adafruit_Sensor),
    which provides a common 'type' for sensor data and some helper functions.
@@ -28,6 +31,7 @@
 */
    
 Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);
+// Adafruit_BMP085 bmp;
 
 /**************************************************************************/
 /*
@@ -35,40 +39,43 @@ Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);
     sensor API sensor_t type (see Adafruit_Sensor for more information)
 */
 /**************************************************************************/
-void displaySensorDetails(void)
-{
-  sensor_t sensor;
-  bmp.getSensor(&sensor);
-  Serial.println("------------------------------------");
-  Serial.print  ("Sensor:       "); Serial.println(sensor.name);
-  Serial.print  ("Driver Ver:   "); Serial.println(sensor.version);
-  Serial.print  ("Unique ID:    "); Serial.println(sensor.sensor_id);
-  Serial.print  ("Max Value:    "); Serial.print(sensor.max_value); Serial.println(" hPa");
-  Serial.print  ("Min Value:    "); Serial.print(sensor.min_value); Serial.println(" hPa");
-  Serial.print  ("Resolution:   "); Serial.print(sensor.resolution); Serial.println(" hPa");  
-  Serial.println("------------------------------------");
-  Serial.println("");
-  delay(500);
-}
+// void displaySensorDetails(void)
+// {
+    // sensor_t sensor;
+    // bmp.getSensor(&sensor);
+    // Serial.println("------------------------------------");
+    // Serial.print  ("Sensor:       "); Serial.println(sensor.name);
+    // Serial.print  ("Driver Ver:   "); Serial.println(sensor.version);
+    // Serial.print  ("Unique ID:    "); Serial.println(sensor.sensor_id);
+    // Serial.print  ("Max Value:    "); Serial.print(sensor.max_value); Serial.println(" hPa");
+    // Serial.print  ("Min Value:    "); Serial.print(sensor.min_value); Serial.println(" hPa");
+    // Serial.print  ("Resolution:   "); Serial.print(sensor.resolution); Serial.println(" hPa");  
+    // Serial.println("------------------------------------");
+    // Serial.println("");
+    // delay(500);
+// }
+
 
 /**************************************************************************/
 /*
     Arduino setup function (automatically called at startup)
 */
 /**************************************************************************/
-void initializeBMP180(void) 
+void init_BMP180(void) 
 {
-     Serial.println("Pressure Sensor Test"); Serial.println("");
+    Serial.print("Initializing BMP180...\t");
   
      /* Initialise the sensor */
-    if(!bmp.begin())
+    if (!bmp.begin())
     {
         /* There was a problem detecting the BMP085 ... check your connections */
         Serial.print("Ooops, no BMP085 detected ... Check your wiring or I2C ADDR!");
     }
+
+    Serial.println("OK!");
   
-  /* Display some basic information on this sensor */
-  displaySensorDetails();
+    /* Display some basic information on this sensor */
+    // displaySensorDetails();
 }
 
 /**************************************************************************/
@@ -77,66 +84,72 @@ void initializeBMP180(void)
     should go here)
 */
 /**************************************************************************/
-String getTemperatureBMP180(char sep) 
+String read_BMP180(char sep) 
 {
-  float temperature;
-  float altitude;
-  float pressure;
+    float temperature;
+    float altitude;
+    float pressure;
 
-  /* Get a new sensor event */ 
-  sensors_event_t event;
-  bmp.getEvent(&event);
- 
-  /* Display the results (barometric pressure is measure in hPa) */
-  if (event.pressure)
-  {
-    /* Display atmospheric pressue in hPa */
-    pressure = event.pressure;
-    Serial.print("Pressure:    ");
-    Serial.print(pressure);
-    Serial.println(" hPa");
+    /* Get a new sensor event */ 
+    sensors_event_t event;
+    bmp.getEvent(&event);
+   
+    /* Display the results (barometric pressure is measure in hPa) */
+    if (event.pressure)
+    {
+        /* Display atmospheric pressue in hPa */ 
+
+        // bmp.getPressure(&pressure);
+        pressure = event.pressure;
+        // pressure = bmp.readPressure();
+        // Serial.print("Pressure:    ");
+        // Serial.print(pressure);
+        // Serial.println(" hPa");
+        
+        /* Calculating altitude with reasonable accuracy requires pressure    *
+         * sea level pressure for your position at the moment the data is     *
+         * converted, as well as the ambient temperature in degress           *
+         * celcius.  If you don't have these values, a 'generic' value of     *
+         * 1013.25 hPa can be used (defined as SENSORS_PRESSURE_SEALEVELHPA   *
+         * in sensors.h), but this isn't ideal and will give variable         *
+         * results from one day to the next.                                  *
+         *                                                                    *
+         * You can usually find the current SLP value by looking at weather   *
+         * websites or from environmental information centers near any major  *
+         * airport.                                                           *
+         *                                                                    *
+         * For example, for Paris, France you can check the current mean      *
+         * pressure and sea level at: http://bit.ly/16Au8ol                   */
+         
+        /* First we get the current temperature from the BMP085 */
     
-    /* Calculating altitude with reasonable accuracy requires pressure    *
-     * sea level pressure for your position at the moment the data is     *
-     * converted, as well as the ambient temperature in degress           *
-     * celcius.  If you don't have these values, a 'generic' value of     *
-     * 1013.25 hPa can be used (defined as SENSORS_PRESSURE_SEALEVELHPA   *
-     * in sensors.h), but this isn't ideal and will give variable         *
-     * results from one day to the next.                                  *
-     *                                                                    *
-     * You can usually find the current SLP value by looking at weather   *
-     * websites or from environmental information centers near any major  *
-     * airport.                                                           *
-     *                                                                    *
-     * For example, for Paris, France you can check the current mean      *
-     * pressure and sea level at: http://bit.ly/16Au8ol                   */
-     
-    /* First we get the current temperature from the BMP085 */
-    
-    bmp.getTemperature(&temperature);
-    Serial.print("Temperature: ");
-    Serial.print(temperature);
-    Serial.println(" C");
+        bmp.getTemperature(&temperature);
+        // temperature = bmp.readTemperature();
+        // Serial.print("Temperature: ");
+        // Serial.print(temperature);
+        // Serial.println(" C");
 
-    /* Then convert the atmospheric pressure, and SLP to altitude         */
-    /* Update this next line with the current SLP for better results      */
-    float seaLevelPressure = SENSORS_PRESSURE_SEALEVELHPA;
-    altitude = bmp.pressureToAltitude(seaLevelPressure,event.pressure);
+        /* Then convert the atmospheric pressure, and SLP to altitude         */
+        /* Update this next line with the current SLP for better results      */
+        // float seaLevelPressure = SENSORS_PRESSURE_SEALEVELHPA;
+        float seaLevelPressure = 1024;
+        altitude = bmp.pressureToAltitude(seaLevelPressure, event.pressure);
+        // altitude = bmp.readAltitude();
+        // Serial.print("Altitude:    "); 
+        // Serial.print(altitude); 
+        // Serial.println(" m");
+        // Serial.println("");
+    }
+    else
+    {
+        Serial.println("Sensor error");
+        return "<error_reading_bmp180>";
+    }
 
-    Serial.print("Altitude:    "); 
-    Serial.print(altitude); 
-    Serial.println(" m");
-    Serial.println("");
-  }
-  else
-  {
-    Serial.println("Sensor error");
-  }
+    String s= "";
+    s += String(pressure) + sep;  
+    s += String(altitude) + sep;  
+    s += String(temperature);
 
-  String s="";
-  s += String(temperature) + sep;
-  s += String(altitude) + sep;
-  s += String(pressure);
-
-  return s;
+    return s;
 }

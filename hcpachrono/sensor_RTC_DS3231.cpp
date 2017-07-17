@@ -1,24 +1,25 @@
 #include <RTClib.h>
-#include "sensor_rtc.h"
+#include "sensor_RTC_DS3231.h"
 
 /*DS3231 parameters*/
 RTC_DS3231 rtc; //defining object
 
 
-void initializeRTC(void)
+void init_RTC_DS3231(void)
 {
     /*initializing DS3231(rtc)*/
-    Serial.println("DS3231 initialized");
+    Serial.print("Initializing RTC DS3231..\t");
     rtc.begin();
+    Serial.println("OK!");
     
-        /*setting time*/
+    /*setting time*/
     // following line sets the RTC to the date & time this sketch was compiled
  
     // rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     // This line sets the RTC with an explicit date & time, for example to set
     // January 21, 2014 at 3am you would call:
     //rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
-    Serial.println("RTC was set");
+    // Serial.println("RTC was set");
 }
 
 
@@ -37,20 +38,20 @@ String getFilenameTimestamp(void)
 }
 
 
-String getDateTime(char sep, char date_sep, char hour_sep)
+String read_RTC_DS3231(char sep, char date_sep, char hour_sep)
 {
     DateTime now = rtc.now();
 
-    String raw="";
-    raw += String(now.year(), DEC) + date_sep;
-    raw += String(now.month(), DEC) + date_sep;
-    raw += String(now.day(), DEC);
-    raw += String(' ');
-    raw += String(now.hour(), DEC) + hour_sep;
-    raw += String(now.minute(), DEC) + hour_sep;
-    raw += String(now.second(), DEC);
+    String s="";
+    s += String(now.year(), DEC) + date_sep;
+    s += String(now.month(), DEC) + date_sep;
+    s += String(now.day(), DEC);
+    s += String(' ');
+    s += String(now.hour(), DEC) + hour_sep;
+    s += String(now.minute(), DEC) + hour_sep;
+    s += String(now.second(), DEC);
 
-    return raw;
+    return s;
 }
 
 

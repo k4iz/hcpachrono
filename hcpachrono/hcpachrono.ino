@@ -1,24 +1,32 @@
-/*All necessary libraries*/
+/* Standard libraries -- relative PATH */
 #include <Arduino.h>
-#include <SD.h>
-#include <SPI.h>
-#include <Wire.h>
-#include "sensor_rtc.h"
-#include "sensor_bmp180.h"
+// #include <Wire.h>
 
-// #define  __USEAUTORANGE
+/* Project libraries -- absolute PATH */
+#include "sensor_RTC_DS3231.h"
+#include "sensor_DHT22.h"
+#include "sensor_BMP180.h"
+#include "sensor_TCS34725_autorange.h"
+// #include "sd_log.h"
 
-// #ifdef __USEAUTORANGE
-    // #include "sensor_tcs_autorange.h"
-// #else
-    #include "sensor_tcs.h"
-    #include "sensor_dht22.h"
+/**************************************************************************/
+/* GLOBAL CONFIGURATIONS */
+
+// #define  BAUDRATE  			 	9600
+#define  BAUDRATE  			 	115200
+#define  DATALOG_FILENAME    	"DADOS.txt"    // max 8 char (beside extension)
+#define  DATALOG_CSV_SEP     	'\t'           // char (ex: ',' or ';' or '\t')
+#define  DATALOG_DELAY          5000           // milliseconds
+
+/*SD card parameters*/
+// #ifdef __AVR
+// 	#define  SD_CS_PIN  4 	    // uno
+// #elif defined(ESP8266)
+//     #define  SD_CS_PIN  15  	// GPIO 15 | D8 on Nodemcu
 // #endif
 
-// Uncomment to enable printing out nice debug messages.
-// #define  DHT_DEBUG
-
-// #define  SAMPLING_RATE      10                    // seconds (reading interval)
+/**************************************************************************/
+/* CAYENNE SETUP */
 
 /*Setting up CAYENNE*/
 //#define CAYENNE_DEBUG
@@ -34,115 +42,56 @@
 // char password[] = "9c85871452d250e2a28630b16b0f0dbdf5d81e1e";
 // char clientID[] = "40096c10-59ed-11e7-9118-bfd202a30a41";
 
-// unsigned long lastMillis = 0;
+/**************************************************************************/
 
-// bool datalog_timeout=false;
+String getDatalogLine(char sep);
 
-
-/*SD card parameters*/
-// #ifdef __AVR
-    const int pinCS = 4; // Pin 4 on Arduino Uno
-// #elif defined(ESP8266)
-//     const int pinCS = 15; // GPIO 15 | D8 on Nodemcu
-// #endif
-
-
-void datalog(void);
-void initializeSDCard(void);
-
-// String filename = "dados.txt";
+char sep=DATALOG_CSV_SEP;
 
 void setup() 
 {
-    /*Open serial communications and wait for port to open:*/
-    Serial.begin(9600);
-    // while (!Serial) {};
+    Serial.begin(BAUDRATE);
+    Serial.println();
 
-    #ifndef ESP8266
-        // while (!Serial); // for Leonardo/Micro/Zero
-    #endif
+    init_RTC_DS3231();             // Real Time Clock
+    init_DHT22();                  // Humidity + Temperature
+    init_BMP180();                 // Pressure + Temperature + Altitude
+    init_TCS34725_autorange();     // Lux + RGB
+
+    // initSDCard(SD_CS_PIN);    
+
+	Serial.println(F("[DEBUG] yyyy-mm-dd HH:MM:ss\tlux\tct\tr\tg\tb\tc\thum\ttemp\thi\tpress\talt\ttemp"));
 
     // Cayenne.begin(username, password, clientID, ssid, wifiPassword);
-
-    // initializeSDCard();
-    initializeRTC(); 
-    initializeBMP180();
-
-
-// #ifdef __USEAUTORANGE
-    // initializeTCS34725_autorange();
-// #else
-    initializeDHT22();    
-    initializeTCS34725();
-// #endif
 }
 
 
 void loop() 
 {
-    datalog();
-    delay(5000);
+    String datalogLine = getDatalogLine(DATALOG_CSV_SEP);
+    Serial.print("[DEBUG] " + datalogLine);
+
+    // writeDatalogSDCard(String(DATALOG_FILENAME), datalogLine)
+    delay(DATALOG_DELAY);
 }
 
 
-void datalog(void)
+/* sep (char) -- CSV datalog line separator
+ * Example: sep = ',' gives datalog line "a,b,c,...,z"
+ */
+String getDatalogLine(char sep)
 {    
-    char sep='\t';   // CSV datalog line separator
-
-    String log_line="";
-
-    log_line += getDateTime(sep, '-', ':') + sep;
-    log_line += getTemperatureBMP180(sep) + sep;
-// #ifdef __USEAUTORANGE
-    // log_line += getLightData_autorange(sep);
-// #else
-    log_line += getTemperatureData(sep) + sep;
-    log_line += getLightData(sep);        
-// #endif
-    log_line += "\r\n";  // NEW LINE windows style
-
-    Serial.print("[DEBUG] ");
-    Serial.print(log_line); 
-
-    // delay(3000);
-
-	// File myFile = SD.open("EITASO.txt", FILE_WRITE);
- //    if (myFile) 
- //    {
-	// 	myFile.print(log_line);
- //    	myFile.close();
-	// 	Serial.println("[INFO] Datalog written");        	
- //    } 
- //    else 
- //    {
- //        /*if the file didn't open, print an error:*/
- //        Serial.println("[ERROR] Could not open file");
- //    }    
+    String s="";
+    s += read_RTC_DS3231(sep, '-', ':') + sep;
+    s += read_TCS34725_autorange(sep) + sep;
+    s += read_DHT22(sep) + sep;
+    s += read_BMP180(sep) + sep;
+    s += "\r\n";  // NEW LINE windows style
+    return s;
 }
 
+// /*********************************************************************/
 
-void initializeSDCard(void)
-{
-
-    /*initializing SD card*/
-    Serial.print("Initializing SD card...");
-    if (!SD.begin(pinCS)) 
-    {
-        Serial.println("Card failed, or not present");
-        // while (1) { delay(0); }; //if there is no SD card present, the program does nothing
-    }
-    Serial.println("SD Card initialized.");
-
-}
-
-
-/*********************************************************************
- * timer callback 
- *********************************************************************/
-// void datalog(void)
-// {
-// 	datalog_timeout = true;
-// }
 
 //Default function for processing actuator commands from the Cayenne Dashboard.
 //You can also use functions for specific channels, e.g CAYENNE_IN(1) for channel 1 commands.

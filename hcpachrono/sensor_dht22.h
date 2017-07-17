@@ -1,6 +1,8 @@
 #ifndef SENSOR_DHT22_H
 #define SENSOR_DHT22_H
 
+/* TEMPERATURE AND HUMIDTY SENSOR */
+
 
 /*DHT22 parameters*/
 #ifdef __AVR
@@ -10,14 +12,14 @@
 #endif
 
 
-void initializeDHT22(void);
+void init_DHT22(void);
 
 
 /* Parameters:
  *     char sep -- CSV separator
  * Return: String -- value of the readings
  */
-String getTemperatureData(char sep);
+String read_DHT22(char sep);
 
 
 #endif

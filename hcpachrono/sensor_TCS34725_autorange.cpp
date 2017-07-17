@@ -1,26 +1,26 @@
 #include <Adafruit_TCS34725.h>
-#include "sensor_tcs_autorange.h"
+
 #include "autorange.h"
+#include "sensor_TCS34725_autorange.h"
 
 tcs34725 tcs_autorange; 
 
 
-void initializeTCS34725_autorange(void)
+void init_TCS34725_autorange(void)
 {
-    /*initializing TCS34725*/
+    Serial.print("Initializing TCS34725..\t");    
     if (tcs_autorange.begin()) 
     {
-        Serial.println("TCS34725 initialized");
+        Serial.println("OK!");
     } 
     else 
     {
         Serial.println("No TCS34725 found ... check your connections");
-        // while (1);
     }
-
 }
 
-String getLightData_autorange(char sep)
+
+String read_TCS34725_autorange(char sep)
 { 
     tcs_autorange.getData();
 
@@ -81,7 +81,7 @@ String getLightData_autorange(char sep)
     s += String(tcs_autorange.r_comp) + sep;
     s += String(tcs_autorange.g_comp) + sep;
     s += String(tcs_autorange.b_comp) + sep;
-    s += String(tcs_autorange.c_comp) + sep;
+    s += String(tcs_autorange.c_comp);
 
     return s;
 }

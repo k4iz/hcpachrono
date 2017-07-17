@@ -5,15 +5,15 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 
-void initializeDHT22(void)
+void init_DHT22(void)
 {
-    /*initializing DHT22*/
-    Serial.println("DHT22 initialized");
+    Serial.print("Initializing DHT22...\t");
     dht.begin();
+    Serial.println("OK!");
 }
 
 
-String getTemperatureData(char sep)
+String read_DHT22(char sep)
 {
     float h = dht.readHumidity();
     float t = dht.readTemperature(); //read temperature as Celcius, for Fahrenheit put argument as "true"
