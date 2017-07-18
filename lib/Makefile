@@ -2,7 +2,7 @@ PIODIR = .pio
 
 INOPROJECT = .
 BAUD = 115200
-BOARD = nodemcuv2
+BOARD = noudemcudv2
 
 MAKEFILEROOT := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 

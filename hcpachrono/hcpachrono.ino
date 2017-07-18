@@ -37,18 +37,18 @@
 /* CAYENNE SETUP */
 
 /*Setting up CAYENNE*/
-//#define CAYENNE_DEBUG
-// #define CAYENNE_PRINT Serial
-// #include <CayenneMQTTESP8266.h>
+#define CAYENNE_DEBUG
+#define CAYENNE_PRINT Serial
+#include <CayenneMQTTESP8266.h>
 
-//network info
-// char ssid[] = "GVT-2707";
-// char wifiPassword[] = "S1F6542520";
+// network info
+char ssid[] = "rafa's phone";
+char wifiPassword[] = "1234567890";
 
-//Cayenne authentication info. This should be obtained from the Cayenne Dashboard.
-// char username[] = "444972e0-286d-11e7-a4a6-237007b7399c";
-// char password[] = "9c85871452d250e2a28630b16b0f0dbdf5d81e1e";
-// char clientID[] = "40096c10-59ed-11e7-9118-bfd202a30a41";
+// Cayenne authentication info. This should be obtained from the Cayenne Dashboard.
+char username[] = "444972e0-286d-11e7-a4a6-237007b7399c";
+char password[] = "9c85871452d250e2a28630b16b0f0dbdf5d81e1e";
+char clientID[] = "40096c10-59ed-11e7-9118-bfd202a30a41";
 
 /**************************************************************************/
 
@@ -57,6 +57,9 @@ String getDatalogLine(char sep);
 char sep=DATALOG_CSV_SEP;
 String datalogLine;
 String datalogHeader = DATALOG_CSV_HEADER;
+
+DHT22_LOG_t * dht22_log;
+TCS34725_LOG_t * tcs34725_log;
 
 void setup() 
 {
@@ -78,7 +81,7 @@ void setup()
 
 	Serial.println(F(DATALOG_CSV_HEADER));
 
-    // Cayenne.begin(username, password, clientID, ssid, wifiPassword);
+    Cayenne.begin(username, password, clientID, ssid, wifiPassword);
 }
 
 
@@ -110,6 +113,36 @@ void loop()
 
     delay(DATALOG_DELAY);
 #endif
+
+/********************************************************************************/
+/* CAYENNE LOG */
+
+    /*DHT22*/
+    Cayenne.virtualWrite(0, dht22_log->temp);
+    Cayenne.virtualWrite(1, dht22_log->hum);
+
+    free(dht22_log);
+    
+
+    /*TCS34725*/
+
+    //tcs34725_log = read_TCS34725_s(sep);
+
+    Cayenne.virtualWrite(2, tcs34725_log->gain);
+    Cayenne.virtualWrite(3, tcs34725_log->lux);
+    Cayenne.virtualWrite(4, tcs34725_log->colortemp);
+    Cayenne.virtualWrite(5, tcs34725_log->red);
+    Cayenne.virtualWrite(6, tcs34725_log->green);
+    Cayenne.virtualWrite(7, tcs34725_log->blue);
+    Cayenne.virtualWrite(8, tcs34725_log->clear);
+
+    free(tcs34725_log);
+
+
+    Cayenne.loop();
+
+/*******************************************************************************/
+
 }
 
 
@@ -120,8 +153,18 @@ String getDatalogLine(char sep)
 {    
     String s="";
     s += read_RTC_DS3231(sep, '-', ':') + sep;
-    s += read_TCS34725_autorange(sep) + sep;
-    s += read_DHT22(sep) + sep;
+
+    tcs34725_log = read_TCS34725_s(sep);
+    s += tcs34725_log->datalog;
+
+    //s += read_TCS34725_autorange(sep) + sep;
+
+
+    // s += read_DHT22(sep) + sep;
+
+    dht22_log = read_DHT22_s(sep);
+    s += dht22_log->datalog;
+
     s += read_BMP180(sep) + sep;
     s += "\r\n";  // NEW LINE windows style
     return s;
@@ -131,9 +174,10 @@ String getDatalogLine(char sep)
 
 
 //Default function for processing actuator commands from the Cayenne Dashboard.
-//You can also use functions for specific channels, e.g CAYENNE_IN(1) for channel 1 commands.
+// You can also use functions for specific channels, e.g CAYENNE_IN(1) for channel 1 commands.
 // CAYENNE_IN_DEFUALT()
 // {
-//     CAYENNE_LOG("CAYENNE_IN_DEFAULT(%u) - %s, %s", request.channel, getValue.getId(), getValue.asString());
+//     CAYENNE_LOG("CAYENNE_IN_DEFAULT(%u) - %s, %s", request.channel, 
+//                 getValue.getId(), getValue.asString());
 //     //Process message here. If there is an error set an error message using getValue.setError(), e.g getValue.setError("Error message");
 // }
