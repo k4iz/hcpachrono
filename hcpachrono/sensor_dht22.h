@@ -22,16 +22,15 @@ typedef struct
 
 void init_DHT22(void);
 
-
-/* Parameters:
- *     char sep -- CSV separator
- * Return: String -- value of the readings
- */
 String read_DHT22(char sep);
-
-
 
 DHT22_LOG_t * read_DHT22_s(char sep);
 
 
 #endif
+
+
+/* Parameters:
+ *     char sep -- CSV separator
+ * Return: String -- value of the readings
+ */

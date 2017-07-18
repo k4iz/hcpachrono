@@ -42,8 +42,8 @@
 #include <CayenneMQTTESP8266.h>
 
 // network info
-char ssid[] = "GVT-2707";
-char wifiPassword[] = "S1F6542520";
+char ssid[] = "rafa's phone";
+char wifiPassword[] = "1234567890";
 
 // Cayenne authentication info. This should be obtained from the Cayenne Dashboard.
 char username[] = "444972e0-286d-11e7-a4a6-237007b7399c";
@@ -59,6 +59,7 @@ String datalogLine;
 String datalogHeader = DATALOG_CSV_HEADER;
 
 DHT22_LOG_t * dht22_log;
+TCS34725_LOG_t * tcs34725_log;
 
 void setup() 
 {
@@ -112,12 +113,38 @@ void loop()
 
     delay(DATALOG_DELAY);
 #endif
+
+/********************************************************************************/
+/* CAYENNE LOG */
+
+    /*DHT22*/
     Cayenne.virtualWrite(0, dht22_log->temp);
     Cayenne.virtualWrite(1, dht22_log->hum);
 
     free(dht22_log);
+    
+
+    /*TCS34725*/
+
+    //tcs34725_log = read_TCS34725_s(sep);
+
+    Cayenne.virtualWrite(2, tcs34725_log->gain);
+    Cayenne.virtualWrite(3, tcs34725_log->lux);
+    Cayenne.virtualWrite(4, tcs34725_log->colortemp);
+    Cayenne.virtualWrite(5, tcs34725_log->red);
+    Cayenne.virtualWrite(6, tcs34725_log->green);
+    Cayenne.virtualWrite(7, tcs34725_log->blue);
+    Cayenne.virtualWrite(8, tcs34725_log->clear);
+
+    free(tcs34725_log);
+
+
     Cayenne.loop();
+
+/*******************************************************************************/
+
 }
+
 
 /* sep (char) -- CSV datalog line separator
  * Example: sep = ',' gives datalog line "a,b,c,...,z"
@@ -126,7 +153,13 @@ String getDatalogLine(char sep)
 {    
     String s="";
     s += read_RTC_DS3231(sep, '-', ':') + sep;
-    s += read_TCS34725_autorange(sep) + sep;
+
+    tcs34725_log = read_TCS34725_s(sep);
+    s += tcs34725_log->datalog;
+
+    //s += read_TCS34725_autorange(sep) + sep;
+
+
     // s += read_DHT22(sep) + sep;
 
     dht22_log = read_DHT22_s(sep);
