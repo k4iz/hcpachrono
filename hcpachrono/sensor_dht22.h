@@ -1,5 +1,6 @@
 #ifndef SENSOR_DHT22_H
 #define SENSOR_DHT22_H
+#include "nodemcu_pinout.h"
 
 /* TEMPERATURE AND HUMIDTY SENSOR */
 
@@ -8,7 +9,7 @@
 #ifdef __AVR
     #define DHTPIN A1 // Pin 2 on Arduino Uno
 #elif defined(ESP8266)
-    #define DHTPIN 2 // GPIO 2 | D4 on Nodemcu
+    #define DHTPIN D4 // GPIO 2 | D4 on Nodemcu
 #endif
 
 

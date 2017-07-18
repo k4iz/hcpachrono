@@ -131,8 +131,9 @@ String read_BMP180(char sep)
 
         /* Then convert the atmospheric pressure, and SLP to altitude         */
         /* Update this next line with the current SLP for better results      */
-        // float seaLevelPressure = SENSORS_PRESSURE_SEALEVELHPA;
+        // float seaLevelPressure = SENSORS_PRESSURE_SEALEVELHPA;        
         float seaLevelPressure = 1024;
+
         altitude = bmp.pressureToAltitude(seaLevelPressure, event.pressure);
         // altitude = bmp.readAltitude();
         // Serial.print("Altitude:    "); 

@@ -76,6 +76,7 @@ String read_TCS34725_autorange(char sep)
     // Serial.println();
 
     String s="";
+    s += String(tcs_autorange.againx) + sep;    
     s += String(tcs_autorange.lux) + sep;
     s += String(tcs_autorange.ct) + sep;
     s += String(tcs_autorange.r_comp) + sep;

@@ -1,13 +1,17 @@
 /* Standard libraries -- relative PATH */
 #include <Arduino.h>
 // #include <Wire.h>
+#include <SD.h>
+#include <SPI.h>
+
 
 /* Project libraries -- absolute PATH */
 #include "sensor_RTC_DS3231.h"
 #include "sensor_DHT22.h"
 #include "sensor_BMP180.h"
-#include "sensor_TCS34725_autorange.h"
-// #include "sd_log.h"
+#include "sensor_TCS34725_autorange.h" 
+
+#include "sd_log.h"
 
 /**************************************************************************/
 /* GLOBAL CONFIGURATIONS */
@@ -18,12 +22,15 @@
 #define  DATALOG_CSV_SEP     	'\t'           // char (ex: ',' or ';' or '\t')
 #define  DATALOG_DELAY          5000           // milliseconds
 
+// uncoment this to get a simple serial protocol for reading data
+// #define  __REPL
+
 /*SD card parameters*/
-// #ifdef __AVR
-// 	#define  SD_CS_PIN  4 	    // uno
-// #elif defined(ESP8266)
-//     #define  SD_CS_PIN  15  	// GPIO 15 | D8 on Nodemcu
-// #endif
+#ifdef __AVR
+	#define  SD_CS_PIN  4 	    // uno
+#elif defined(ESP8266)
+    #define  SD_CS_PIN  15  	// GPIO 15 | D8 on Nodemcu
+#endif
 
 /**************************************************************************/
 /* CAYENNE SETUP */
@@ -47,6 +54,7 @@
 String getDatalogLine(char sep);
 
 char sep=DATALOG_CSV_SEP;
+String datalogLine;
 
 void setup() 
 {
@@ -58,9 +66,9 @@ void setup()
     init_BMP180();                 // Pressure + Temperature + Altitude
     init_TCS34725_autorange();     // Lux + RGB
 
-    // initSDCard(SD_CS_PIN);    
+    initSDCard(SD_CS_PIN);
 
-	Serial.println(F("[DEBUG] yyyy-mm-dd HH:MM:ss\tlux\tct\tr\tg\tb\tc\thum\ttemp\thi\tpress\talt\ttemp"));
+	Serial.println(F("[DEBUG] yyyy-mm-dd HH:MM:ss\tagainx\tlux\tct\tr\tg\tb\tc\thum\ttemp\thi\tpress\talt\ttemp"));
 
     // Cayenne.begin(username, password, clientID, ssid, wifiPassword);
 }
@@ -68,11 +76,31 @@ void setup()
 
 void loop() 
 {
-    String datalogLine = getDatalogLine(DATALOG_CSV_SEP);
+#ifdef __REPL
+	if (Serial.available())
+	{
+		char c = Serial.read();
+		if (c == 'r')
+		{ 
+			Serial.print("[READING]\n[DEBUG] ");
+			// Serial.print(getDatalogLine(DATALOG_CSV_SEP));
+
+		    Serial.print(read_RTC_DS3231(sep, '-', ':') + sep);
+		    Serial.print(read_TCS34725_autorange(sep) + sep);
+		    Serial.print(read_DHT22(sep) + sep);
+		    Serial.print(read_BMP180(sep) + sep);
+
+			Serial.println("[DONE]");
+		}
+	}
+#else
+  	datalogLine = getDatalogLine(DATALOG_CSV_SEP);
     Serial.print("[DEBUG] " + datalogLine);
 
-    // writeDatalogSDCard(String(DATALOG_FILENAME), datalogLine)
+    writeDatalogSDCard(String(DATALOG_FILENAME), datalogLine);
+
     delay(DATALOG_DELAY);
+#endif
 }
 
 
