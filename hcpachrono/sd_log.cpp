@@ -15,7 +15,6 @@ bool initSDCard(int pinCS)
     return true;
 }
 
-
 bool writeDatalogSDCard(String filename, String datalogLine)
 {
 	File sdFile = SD.open(filename.c_str(), FILE_WRITE);
@@ -32,3 +31,4 @@ bool writeDatalogSDCard(String filename, String datalogLine)
         return false;
     }    
 }
+

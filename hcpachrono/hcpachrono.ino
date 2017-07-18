@@ -21,6 +21,7 @@
 #define  DATALOG_FILENAME    	"DADOS.txt"    // max 8 char (beside extension)
 #define  DATALOG_CSV_SEP     	'\t'           // char (ex: ',' or ';' or '\t')
 #define  DATALOG_DELAY          5000           // milliseconds
+#define  DATALOG_CSV_HEADER     "yyyy-mm-dd HH:MM:ss\tagainx\tlux\tct\tr\tg\tb\tc\thum\ttemp\thi\tpress\talt\ttemp"
 
 // uncoment this to get a simple serial protocol for reading data
 // #define  __REPL
@@ -55,6 +56,7 @@ String getDatalogLine(char sep);
 
 char sep=DATALOG_CSV_SEP;
 String datalogLine;
+String datalogHeader = DATALOG_CSV_HEADER;
 
 void setup() 
 {
@@ -68,7 +70,13 @@ void setup()
 
     initSDCard(SD_CS_PIN);
 
-	Serial.println(F("[DEBUG] yyyy-mm-dd HH:MM:ss\tagainx\tlux\tct\tr\tg\tb\tc\thum\ttemp\thi\tpress\talt\ttemp"));
+    if (SD.exists(DATALOG_FILENAME))
+    {
+        datalogHeader += "\t#";     
+    }
+    writeDatalogSDCard(String(DATALOG_FILENAME), datalogHeader + "\r\n");
+
+	Serial.println(F(DATALOG_CSV_HEADER));
 
     // Cayenne.begin(username, password, clientID, ssid, wifiPassword);
 }
@@ -95,6 +103,7 @@ void loop()
 	}
 #else
   	datalogLine = getDatalogLine(DATALOG_CSV_SEP);
+    Serial.println("[DEBUG] " + String(DATALOG_CSV_HEADER));
     Serial.print("[DEBUG] " + datalogLine);
 
     writeDatalogSDCard(String(DATALOG_FILENAME), datalogLine);
