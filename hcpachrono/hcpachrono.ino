@@ -1,6 +1,6 @@
 /* Standard libraries -- relative PATH */
 #include <Arduino.h>
-// #include <Wire.h>
+#include <Wire.h>
 #include <SD.h>
 #include <SPI.h>
 
@@ -9,7 +9,7 @@
 #include "sensor_RTC_DS3231.h"
 #include "sensor_DHT22.h"
 #include "sensor_BMP180.h"
-#include "sensor_TCS34725_autorange.h" 
+#include "sensor_TCS34725_autorange.h"
 
 #include "sd_log.h"
 
@@ -61,7 +61,7 @@ String datalogHeader = DATALOG_CSV_HEADER;
 DHT22_LOG_t * dht22_log;
 TCS34725_LOG_t * tcs34725_log;
 
-void setup() 
+void setup()
 {
     Serial.begin(BAUDRATE);
     Serial.println();
@@ -75,7 +75,7 @@ void setup()
 
     if (SD.exists(DATALOG_FILENAME))
     {
-        datalogHeader += "\t#";     
+        datalogHeader += "\t#";
     }
     writeDatalogSDCard(String(DATALOG_FILENAME), datalogHeader + "\r\n");
 
@@ -85,14 +85,14 @@ void setup()
 }
 
 
-void loop() 
+void loop()
 {
 #ifdef __REPL
 	if (Serial.available())
 	{
 		char c = Serial.read();
 		if (c == 'r')
-		{ 
+		{
 			Serial.print("[READING]\n[DEBUG] ");
 			// Serial.print(getDatalogLine(DATALOG_CSV_SEP));
 
@@ -122,7 +122,7 @@ void loop()
     Cayenne.virtualWrite(1, dht22_log->hum);
 
     free(dht22_log);
-    
+
 
     /*TCS34725*/
 
@@ -150,7 +150,7 @@ void loop()
  * Example: sep = ',' gives datalog line "a,b,c,...,z"
  */
 String getDatalogLine(char sep)
-{    
+{
     String s="";
     s += read_RTC_DS3231(sep, '-', ':') + sep;
 
@@ -177,7 +177,7 @@ String getDatalogLine(char sep)
 // You can also use functions for specific channels, e.g CAYENNE_IN(1) for channel 1 commands.
 // CAYENNE_IN_DEFUALT()
 // {
-//     CAYENNE_LOG("CAYENNE_IN_DEFAULT(%u) - %s, %s", request.channel, 
+//     CAYENNE_LOG("CAYENNE_IN_DEFAULT(%u) - %s, %s", request.channel,
 //                 getValue.getId(), getValue.asString());
 //     //Process message here. If there is an error set an error message using getValue.setError(), e.g getValue.setError("Error message");
 // }
